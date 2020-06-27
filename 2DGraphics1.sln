@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "drawPixels", "drawPixels\dr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameLib", "GameLib\GameLib.vcxproj", "{B0964F56-1AFE-408E-8FFE-358C8623787A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Modules", "Modules\Modules.vcxproj", "{C4625244-03DC-4135-A98F-9C88A39B407D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{B0964F56-1AFE-408E-8FFE-358C8623787A}.Release|x64.Build.0 = Release|x64
 		{B0964F56-1AFE-408E-8FFE-358C8623787A}.Release|x86.ActiveCfg = Release|Win32
 		{B0964F56-1AFE-408E-8FFE-358C8623787A}.Release|x86.Build.0 = Release|Win32
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Debug|x64.ActiveCfg = Debug|x64
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Debug|x64.Build.0 = Debug|x64
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Debug|x86.ActiveCfg = Debug|Win32
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Debug|x86.Build.0 = Debug|Win32
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Release|x64.ActiveCfg = Release|x64
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Release|x64.Build.0 = Release|x64
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Release|x86.ActiveCfg = Release|Win32
+		{C4625244-03DC-4135-A98F-9C88A39B407D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
