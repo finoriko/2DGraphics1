@@ -1,4 +1,3 @@
-#pragma once
 #ifndef INCLUDED_GAMELIB_WINDOWCREATOR_H
 #define INCLUDED_GAMELIB_WINDOWCREATOR_H
 
@@ -16,6 +15,8 @@ namespace GameLib
 			void enableFullScreen(bool = true);
 			void enableDragAndDrop(bool = true);
 		};
+		WindowCreator();
+
 	};
 }
 
