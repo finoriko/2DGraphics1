@@ -16,7 +16,22 @@ namespace GameLib
 			void enableDragAndDrop(bool = true);
 		};
 		WindowCreator();
+		//사용자 구현함수
+		void configure(Configuration*);
+		void start(void* windowHandle);
+		void update();
 
+		const char* title() const;
+		//문자열 입력받기
+		const char* commandLineString() const;
+
+		int titleLength() const;
+		int width() const;
+		int height() const;
+		bool isFullScreen() const;
+		bool isMinimized() const;
+		bool isActive() const;
+		void enableFullScreen(bool);
 	};
 }
 

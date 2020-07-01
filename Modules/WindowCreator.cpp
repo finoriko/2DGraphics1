@@ -60,15 +60,55 @@ namespace GameLib
 			bool mFullScreenForbidden;
 			bool mDragAndDropEnabled;
 			int mMouseWheel;
-			unsigned mTimeBias; //timeGetTimeにはかせるゲタ
+			unsigned mTimeBias; //timeGetTime
 			unsigned mThreadId;
 			//Array< string > mDroppedItems;
 			HWND mWindowHandle;
 			RECT mWindowRect;
 		};
-		
+		Impl* gImpl = 0;//유일한 인스턴스
+	}
+	WindowCreator::WindowCreator() {
+		//다른 스레드로부터 호출은 허용하지 않는다
+		//ASSERT(isMainThread() && "you must call from MAIN thread");
+	}
+	const char* WindowCreator::title() const {
+		return gImpl->mTitle.c_str();
 	}
 
+	const char* WindowCreator::commandLineString() const {
+		return gImpl->mCommandLine.c_str();
+	}
+
+	int WindowCreator::titleLength() const {
+		return static_cast<int>(gImpl->mTitle.size());
+	}
+
+	int WindowCreator::height() const {
+		return gImpl->mHeight;
+	}
+
+	int WindowCreator::width() const {
+		return gImpl->mWidth;
+	}
+
+	bool WindowCreator::isFullScreen() const {
+		return gImpl->mFullScreen;
+	}
+
+	bool WindowCreator::isMinimized() const
+	{
+		return false;
+	}
+
+	bool WindowCreator::isActive() const
+	{
+		return false;
+	}
+
+	void WindowCreator::enableFullScreen(bool)
+	{
+	}
 
 	void WindowCreator::Configuration::setWidth(int width)
 	{
