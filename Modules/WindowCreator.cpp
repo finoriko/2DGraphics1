@@ -9,7 +9,7 @@
 #undef min
 #undef max
 
-#include "../include/WindowCreator.h"
+#include "GameLib/WindowCreator/WindowCreator.h"
 using namespace std;
 using namespace GameLib;
 
