@@ -144,7 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="WindowCreator.cpp" />
+    <ClCompile Include="src\Input\Manager.cpp" />
+    <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />

@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WindowCreator.cpp">
+    <ClCompile Include="src\Input\Manager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WindowCreator\WindowCreator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
