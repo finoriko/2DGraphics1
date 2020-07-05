@@ -147,6 +147,7 @@
     <ClCompile Include="WindowCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\GameLib\Input\Manager.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
