@@ -21,12 +21,36 @@
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Input\Keyboard.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Input\Manager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Input\Keyboard.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\GameLib.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\AutoPtr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\DebugStream.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\MemoryManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\SharedPtr.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Array.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -144,10 +144,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Input\Keyboard.cpp" />
     <ClCompile Include="src\Input\Manager.cpp" />
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\GameLib\Base\Array.h" />
+    <ClInclude Include="..\include\GameLib\Base\AutoPtr.h" />
+    <ClInclude Include="..\include\GameLib\Base\DebugStream.h" />
+    <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
+    <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
+    <ClInclude Include="..\include\GameLib\GameLib.h" />
+    <ClInclude Include="..\include\GameLib\Input\Keyboard.h" />
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
   </ItemGroup>
