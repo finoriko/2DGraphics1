@@ -1,5 +1,6 @@
+#include "GameLib/GameLib.h"
+#include "GameLib/WindowCreator/WindowCreator.h"
 #include "GameLib/Input/Manager.h"
-
 
 #include "Framework.h"
 #include "FontTextureGenerated.h"
@@ -29,11 +30,31 @@ namespace GameLib
 				mPreviousFrameInterval(0),
 				mFrameRate(0),
 				mEndRequested(false),
-				mStarted(false) {
-			
+				mStarted(false) 
+			{
+			//Count 초기화
+				unsigned t = time();
+				//프레임 이력 리셋
+				for (int i = 0; i < TIME_HISTORY_SIZE; ++i) {
+					mTimeHistory[i] = t;
+				}
+
+				mVideoMemoryWithPadding.setSize(mWidth * (mHeight + 2));
+				//0초기화
+				for (int i = 0; i < mWidth * (mHeight + 2); ++i) {
+					mVideoMemoryWithPadding[i] = 0;
+				}
+				for (int i = 0; i < mWidth; ++i) {
+					mVideoMemoryWithPadding[i] = MAGIC_NUMBER;
+					mVideoMemoryWithPadding[mWidth * (mHeight + 1) + i] = MAGIC_NUMBER;
+				}
 			}
-
-
+			unsigned time() const {
+				return WindowCreator().time();
+			}
+			Array< unsigned > mVideoMemoryWithPadding;
+			Graphics::Texture m2dTexture;
+			static const unsigned MAGIC_NUMBER = 0x12345678;
 			int mWidth;
 			int mHeight;
 			bool mFullScreen;
@@ -102,6 +123,7 @@ namespace GameLib
 
 	void Framework::postUpdate()
 	{
+		gImpl->postUpdate();
 	}
 
 	void Framework::create()

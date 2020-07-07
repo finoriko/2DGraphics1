@@ -3,10 +3,10 @@
 
 namespace GameLib{
 
-///解放を忘れがちなあわてんぼさんのための自動解放配列
+//해제를 잘 잊어버리는 분을 위한 자동 해제 배열 템플릿
 template< class T > class Array{
 public:
-	///デフォルト。サイズは0。
+	///디폴트 사이즈는 0
 	Array();
 	///初期サイズ。全要素はデフォルトコンストラクタで初期化される。
 	explicit Array( int size );
