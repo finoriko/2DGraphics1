@@ -7,16 +7,16 @@ template< class T > class AutoPtr{
 public:
 	AutoPtr( T* p = 0 );
 	~AutoPtr();
-	//代入:中身があれば即削除(これを利用して、=0で好きなタイミングで消せる)
+	//대입 : 내용물이 있으면 즉시 삭제 (이를 이용하여 =0으로 원하는 타이밍에 지울 수 있음)
 	AutoPtr& operator=( T* p );
 	T& operator*();
 	const T& operator*() const;
 	T* operator->();
 	const T* operator->() const;
-	operator void*() const; //これのおかげでif ( p ){ と書ける。
+	operator void*() const; //이것 덕분에 if (p) {라고 쓸 수 있다.
 private:
-	void operator=( AutoPtr< T >& ); //代入は禁止。管理の移譲はわかりにくい。
-	AutoPtr( AutoPtr< T >& ); //コピーコンストラクタも禁止。管理の移譲はわかりにくい。
+	void operator=( AutoPtr< T >& ); //대입금지 관리의 이양은 이해하기 어렵다.
+	AutoPtr( AutoPtr< T >& ); //복사 생성자 금지
 
 	T* mPointer;
 };

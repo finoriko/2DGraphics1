@@ -9,8 +9,8 @@ namespace GameLib{
 class RefString;
 class OStringStream;
 
-//デバグアウトにcoutで出すためのもの
-//複数スレッドから同時に呼んでも良い
+//디버그아웃에 cout으로 내기 위한것
+//여러 스레드로 동시에 불러도 된다
 class DebugStream{
 public:
 	DebugStream();

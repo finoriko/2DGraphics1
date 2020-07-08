@@ -8,24 +8,24 @@ template< class T > class Array{
 public:
 	///디폴트 사이즈는 0
 	Array();
-	///初期サイズ。全要素はデフォルトコンストラクタで初期化される。
+	///초기 사이즈입니다.모든 요소는 기본 생성자로 초기화됩니다.
 	explicit Array( int size );
-	//初期サイズ、初期値を渡す
+	//초기 사이즈 초기값 전달
 	explicit Array( int size, const T& );
 	~Array();
-	///後から確保。縮小は可能だが、拡大は不可。一旦clear()すること。
+	///나중에 확보。축소는 가능하지만、확대는 불가。일단clear()할것。
 	void setSize( int size );
-	///サイズ取得
+	///사이즈 가져오기
 	int size() const;
-	///全解放
+	///클리어
 	void clear();
-	///添え字(const)
+	///添え字(const)//첨자
 	const T& operator[]( int i ) const;
-	///添え字(非const)
+	///添え字(非const)//비첨자
 	T& operator[]( int i );
 private:
-	void operator=( const Array& ); //代入禁止
-	Array( const Array& ); //コピーコンストラクタ禁止
+	void operator=( const Array& ); //대입금지
+	Array( const Array& ); //복사 생성자 금지
 
 	T* mElements;
 	int mSize;

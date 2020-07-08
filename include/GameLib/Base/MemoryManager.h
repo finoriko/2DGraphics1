@@ -3,14 +3,14 @@
 
 namespace GameLib{
 
-//newをつかさどるクラス
+//new를 담당하는 클래스
 class MemoryManager{
 public:
 	static MemoryManager instance();
 
-	///情報の書き出し(ファイル名を与えればファイルへ、与えなければデバグ出力へ)
+	///정보 쓰기(파일명을 주면 파일로, 안 주면 디버그 출력으로)
 	void write( const char* filename = 0 );
-	///全確保容量(内部予約容量を含む)
+	///모든 확보 용량(내부 예약 용량 포함)
 	int totalSize() const;
 };
 
