@@ -7,3 +7,7 @@ namespace GameLib
 
 	}
 }
+
+GmaeLib::Input::Manager::Manager()
+{
+}

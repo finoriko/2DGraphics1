@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Input\Joystick.cpp" />
     <ClCompile Include="src\Input\Keyboard.cpp" />
     <ClCompile Include="src\Input\Manager.cpp" />
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Input\Keyboard.h" />
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />
+    <ClInclude Include="..\include\GameLib\Input\ManagerImpl.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
