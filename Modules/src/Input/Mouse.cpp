@@ -2,7 +2,7 @@
 #include "GameLib/Input/Mouse.h"
 #include "GameLib/WindowCreator/WindowCreator.h"
 
-#include "GameLib/Input/Mouse.h"
+#include "ManagerImpl.h"
 
 //마우스의 실체는 매니저이다.
 namespace GameLib {

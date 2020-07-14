@@ -1,7 +1,7 @@
 #include "GameLib/GameLib.h"
 #include "GameLib/Input/Keyboard.h"
 
-#include "Input/ManagerImpl.h"
+#include "ManagerImpl.h"
 
 namespace GameLib {
 	namespace Input {

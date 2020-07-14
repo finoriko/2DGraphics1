@@ -148,6 +148,8 @@
     <ClCompile Include="src\Input\Keyboard.cpp" />
     <ClCompile Include="src\Input\Manager.cpp" />
     <ClCompile Include="src\Input\Mouse.cpp" />
+    <ClCompile Include="src\Math\Functions.cpp" />
+    <ClCompile Include="src\Math\vector2.cpp" />
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +164,8 @@
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />
     <ClInclude Include="..\include\GameLib\Input\ManagerImpl.h" />
     <ClInclude Include="..\include\GameLib\Input\Mouse.h" />
+    <ClInclude Include="..\include\GameLib\Math\Functions.h" />
+    <ClInclude Include="..\include\GameLib\Math\Vector2.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
     <ClInclude Include="src\Input\JoystickImpl.h" />
     <ClInclude Include="src\Input\ManagerImpl.h" />
