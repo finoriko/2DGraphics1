@@ -36,6 +36,12 @@
     <ClCompile Include="src\Math\Functions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Threading\Functions.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Random.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
@@ -84,6 +90,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Math\Functions.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Threading\Functions.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Random.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
