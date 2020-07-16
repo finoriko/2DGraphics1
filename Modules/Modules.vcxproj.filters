@@ -98,5 +98,14 @@
     <ClInclude Include="..\include\GameLib\Math\Random.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

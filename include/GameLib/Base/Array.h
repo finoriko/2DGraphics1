@@ -32,7 +32,7 @@ private:
 };
 
 } //namespace GameLib
-#include "GameLib/Base/Impl/ArrayImpl.h" //中身はこの中
+#include "GameLib/Base/Impl/ArrayImpl.h" //속은 상자 속입니다.
 
 #endif
 
