@@ -159,6 +159,7 @@
     <ClInclude Include="..\include\GameLib\Base\AutoPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\DebugStream.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h" />
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />

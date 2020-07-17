@@ -107,5 +107,8 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
