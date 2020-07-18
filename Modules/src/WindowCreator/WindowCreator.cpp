@@ -5,11 +5,15 @@
 #include <tchar.h>
 #include <windows.h>
 #include <mmsystem.h>
+#include "WindowCreator/resource.h"
 #include <string>
 #undef min
 #undef max
 
+#include "GameLib/GameLib.h"
 #include "GameLib/WindowCreator/WindowCreator.h"
+#include "GameLib/Threading/Functions.h"
+
 using namespace std;
 using namespace GameLib;
 
@@ -109,9 +113,11 @@ namespace GameLib
 	void WindowCreator::enableFullScreen(bool)
 	{
 	}
+	//Configuration
 
 	void WindowCreator::Configuration::setWidth(int width)
 	{
+		gImpl->mWidth = width;
 	}
 
 	void WindowCreator::Configuration::setHeight(int height)
