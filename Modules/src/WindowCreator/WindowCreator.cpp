@@ -5,7 +5,7 @@
 #include <tchar.h>
 #include <windows.h>
 #include <mmsystem.h>
-#include "WindowCreator/resource.h"
+#include "resource.h"
 #include <string>
 #undef min
 #undef max

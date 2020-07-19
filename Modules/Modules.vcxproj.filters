@@ -110,5 +110,11 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="src\WindowCreator\resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
