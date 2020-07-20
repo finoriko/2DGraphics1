@@ -1,8 +1,10 @@
 #ifndef INCLUDED_GAMELIB_GAMELIB_H
 #define INCLUDED_GAMELIB_GAMELIB_H
 
-namespace GameLib {
-	enum Exception {
+namespace GameLib 
+{
+	enum Exception 
+	{
 		EXCEPTION_IGNORE,
 		EXCEPTION_EXIT,
 	};
