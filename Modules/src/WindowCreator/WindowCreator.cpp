@@ -259,6 +259,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	HACCEL hAccelTable;
 
 	//윈도우 상태 유지 클래스 생성
+	
 	gImpl = NEW Impl();
 	gImpl->mCommandLine = lpCmdLine;
 	WindowCreator wc;
@@ -355,3 +356,173 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	return (int)msg.wParam;
 }
 
+//
+//  함수: MyRegisterClass()
+//
+//  목적: 윈도우 클래스를 등록합니다
+//
+//  코멘트:
+//
+//  이 함수 및 사용법은 'Register Class Ex' 함수가 추가된
+//   Windows 95 이전 Win32 시스템과 호환시킬 경우에만 필요합니다.
+//   어플리케이션이 연관된
+//   올바른 형식의 작은 아이콘을 얻을 수 있도록 하려면
+//    이 함수를 호출해 주세요.
+//
+ATOM MyRegisterClass(HINSTANCE hInstance)
+{
+	WNDCLASSEX wcex;
+
+	wcex.cbSize = sizeof(WNDCLASSEX);
+
+	wcex.style = CS_HREDRAW | CS_VREDRAW;
+	wcex.lpfnWndProc = WndProc;
+	wcex.cbClsExtra = 0;
+	wcex.cbWndExtra = 0;
+	wcex.hInstance = hInstance;
+	wcex.hIcon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_WINDOWCREATOR));
+	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
+	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+	wcex.lpszMenuName = MAKEINTRESOURCE(IDC_WINDOWCREATOR);
+	wcex.lpszClassName = szWindowClass;
+	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+	return RegisterClassEx(&wcex);
+}
+
+//
+//   함수 InitInstance(HINSTANCE, int)
+//
+//   목적: 인스턴스 핸들을 저장하고 메인 창을 만듭니다.
+//
+//   코멘트:
+//
+//       이 함수로 글로벌 변수로 인스턴스 핸들을 저장하고
+//       메인 프로그램 창을 작성 및 표시합니다.
+//
+BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
+{
+	HWND hWnd;
+
+	hInst = hInstance;// 글로벌 변수에 인스턴스 처리를 격납합니다.
+//----
+	DWORD style = 0;
+	if (gImpl->mFullScreen) {
+		style = WS_POPUP;
+	}
+	else {
+		style = WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX;
+	}
+	RECT rect;
+	rect.left = 0;
+	rect.top = 0;
+	rect.right = gImpl->mWidth;
+	rect.bottom = gImpl->mHeight;
+	AdjustWindowRect(&rect, style, FALSE);
+	rect.right -= rect.left;
+	rect.bottom -= rect.top; //차분계산
+	rect.left = 0;
+	rect.top = 0;
+	//----
+
+	hWnd = CreateWindow(szWindowClass, szTitle,
+		style,
+		CW_USEDEFAULT, CW_USEDEFAULT,
+		rect.right, rect.bottom, NULL, NULL, hInstance, NULL);
+
+	if (!hWnd)
+	{
+		return FALSE;
+	}
+
+	ShowWindow(hWnd, nCmdShow);
+	UpdateWindow(hWnd);
+
+	gImpl->mWindowHandle = hWnd;
+
+	return TRUE;
+}
+
+//
+//  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
+//
+//  목적:  메인 창의 메시지를 처리합니다.
+//
+//  WM_COMMAND	- 애플리케이션 메뉴 처리
+//  WM_PAINT	- 메인 창의 그림
+//  WM_DESTROY	- 중지 메시지를 표시하고 돌아오다
+//
+//
+LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message)
+	{
+		break;
+	case WM_CLOSE: //종료 요청
+		gImpl->mEndRequested = true;
+		break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	case WM_SYSKEYDOWN: //alt+enter 인식
+		if (!gImpl->mFullScreenForbidden) {
+			if (wParam == VK_RETURN) {
+				if (gImpl->mFullScreen) {
+					WindowCreator().enableFullScreen(false);
+				}
+				else {
+					WindowCreator().enableFullScreen(true);
+				}
+			}
+		}
+		DefWindowProc(hWnd, message, wParam, lParam);
+		break;
+	case WM_ACTIVATE:
+		if (wParam & 0xffff0000) { //최소화 되어 있으면 false
+			gImpl->mActive = false;
+		}
+		else {
+			gImpl->mActive = ((wParam & 0xffff) != 0);
+		}
+		break;
+	case WM_SYSCOMMAND:
+		if (wParam == SC_MAXIMIZE) {
+			if (!gImpl->mFullScreenForbidden) {
+				WindowCreator().enableFullScreen(true); // 최대화 시 DefWindow Proc 부르지 않음
+			}
+		}
+		else if (wParam == SC_MINIMIZE) {
+			gImpl->mMinimized = true;
+			gImpl->mActive = false;
+			DefWindowProc(hWnd, message, wParam, lParam);
+		}
+		else if (wParam == SC_RESTORE) {
+			gImpl->mMinimized = false;
+			gImpl->mActive = true;
+			DefWindowProc(hWnd, message, wParam, lParam);
+		}
+		else {
+			DefWindowProc(hWnd, message, wParam, lParam);
+		}
+		break;
+	case WM_MOUSEWHEEL:
+		gImpl->mMouseWheel = (static_cast<short>(HIWORD(wParam)) > 0) ? 1 : -1;
+		break;
+	case WM_DROPFILES:
+		if (gImpl->mDragAndDropEnabled) {
+			HDROP hDrop = (HDROP)wParam;
+			gImpl->mDroppedItems.clear();
+			unsigned n = DragQueryFileA(hDrop, 0xffffffff, NULL, 0);
+			gImpl->mDroppedItems.setSize(n);
+			char item[MAX_PATH];
+			for (unsigned i = 0; i < n; ++i) {
+				DragQueryFileA(hDrop, i, item, MAX_PATH);
+				gImpl->mDroppedItems[i] = item;
+			}
+		}
+		break;
+	default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	}
+	return 0;
+}

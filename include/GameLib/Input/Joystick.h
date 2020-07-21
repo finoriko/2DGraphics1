@@ -1,8 +1,8 @@
 #ifndef INCLUDED_GAMELIB_INPUT_JOYSTICK_H
 #define INCLUDED_GAMELIB_INPUT_JOYSTICK_H
 
-namespace GameLib 
-{
+//namespace GameLib 
+//{
 	namespace Input 
 	{
 		class Joystick
@@ -34,5 +34,5 @@ namespace GameLib
 			Impl* mImpl;
 		};
 	}
-}
+//}
 #endif
