@@ -170,7 +170,6 @@
     <ClInclude Include="..\include\GameLib\Input\Joystick.h" />
     <ClInclude Include="..\include\GameLib\Input\Keyboard.h" />
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />
-    <ClInclude Include="..\include\GameLib\Input\ManagerImpl.h" />
     <ClInclude Include="..\include\GameLib\Input\Mouse.h" />
     <ClInclude Include="..\include\GameLib\Math\Functions.h" />
     <ClInclude Include="..\include\GameLib\Math\Random.h" />

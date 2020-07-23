@@ -1,5 +1,5 @@
-#include "..\..\..\include\GameLib\Math\Vector2.h"
-//#include "GameLib/GameLib.h"
+#include "GameLib\Math\Vector2.h"
+#include "GameLib/GameLib.h"
 //#include "GameLib/Math/Vector2.h"
 //#include "GameLib/Math/Functions.h"
 //
@@ -178,6 +178,14 @@
 //} //namespace GameLib
 //
 
+namespace GameLib
+{
+	namespace Math
+	{
+		Vector2::Vector2() {
+					}
+	}
+}
 GameLib::Math::Vector2::Vector2()
 {
 }

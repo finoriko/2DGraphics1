@@ -5,8 +5,8 @@
 #include "GameLib/GameLib.h"
 #include "GameLib/Threading/Functions.h"
 
-namespace GameLib 
-{
+//namespace GameLib 
+//{
 	namespace Threading 
 	{
 		void sleep(int milliSeconds) 
@@ -18,4 +18,4 @@ namespace GameLib
 			return GetCurrentThreadId();
 		}
 	} //namespace Threading
-} //namespace GameLib
+//} //namespace GameLib

@@ -74,9 +74,6 @@
     <ClInclude Include="..\include\GameLib\Base\Array.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Input\ManagerImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\GameLib\Input\Joystick.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
