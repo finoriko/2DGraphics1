@@ -1,3 +1,4 @@
+//#include "..\..\..\include\GameLib\Math\Functions.h"
 #include "GameLib/GameLib.h"
 #include "GameLib/Math/Functions.h"
 #include "GameLib/Math/Random.h"
@@ -82,3 +83,4 @@ namespace GameLib {
 
 	} //namespace Math
 } //namespace GameLib
+
