@@ -61,7 +61,7 @@ namespace GameLib {
 
 		Random Random::create(int seed) {
 			Random r;
-			r.mImpl = NEW Impl(seed);
+			r.mImpl = new Impl(seed);
 			return r;
 		}
 
