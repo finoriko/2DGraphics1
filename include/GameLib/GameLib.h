@@ -15,7 +15,7 @@ namespace GameLib
 //#define HALT( exp ) { GameLib::halt( __FILE__, __LINE__, #exp ); }
 #define SAFE_DELETE( x ) { delete ( x ); ( x ) = 0; }
 #define SAFE_DELETE_ARRAY( x ) { delete[] ( x ); ( x ) = 0; }
-//#define OPERATOR_DELETE( x ) { operator delete( x ); ( x ) = 0;
+#define OPERATOR_DELETE( x ) { operator delete( x ); ( x ) = 0;}
 //
 ////디버그와 릴리즈로 분기하는 것
 #ifndef NDEBUG

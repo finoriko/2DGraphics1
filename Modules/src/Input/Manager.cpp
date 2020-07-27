@@ -55,14 +55,20 @@ namespace GameLib {
 
 GmaeLib::Input::Manager::Manager()
 {
+		//ASSERT(WindowCreator::isMainThread() && "you must call from MAIN thread");
 }
+//
+//Manager GmaeLib::Input::Manager::instance()
+//{
+//	return Manager();
+//}
+//
+//Mouse GmaeLib::Input::Manager::mouse() const
+//{
+//	return Mouse();
+//}
 
-Manager GmaeLib::Input::Manager::instance()
+int GmaeLib::Input::Manager::joystickNumber() const
 {
-	return Manager();
-}
-
-Mouse GmaeLib::Input::Manager::mouse() const
-{
-	return Mouse();
+	return 0;
 }
