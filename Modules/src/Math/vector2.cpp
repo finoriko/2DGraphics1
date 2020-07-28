@@ -177,15 +177,3 @@ namespace GameLib {
 	} //namespace Math
 } //namespace GameLib
 
-
-//namespace GameLib
-//{
-//	namespace Math
-//	{
-//		Vector2::Vector2() {
-//					}
-//	}
-//}
-//GameLib::Math::Vector2::Vector2()
-//{
-//}
