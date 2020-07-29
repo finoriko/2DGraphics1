@@ -261,7 +261,9 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	//윈도우 상태 유지 클래스 생성
 	
 	gImpl = NEW Impl();
-	gImpl->mCommandLine = lpCmdLine;
+	wstring cmdline = lpCmdLine;
+	string strlpcmdline(cmdline.begin(), cmdline.end());
+	gImpl->mCommandLine = strlpcmdline;
 	WindowCreator wc;
 	//사용자 설정 함수 호출
 	WindowCreator::Configuration config;
