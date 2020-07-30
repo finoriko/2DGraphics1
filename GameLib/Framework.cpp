@@ -1,6 +1,17 @@
 #include "GameLib/GameLib.h"
 #include "GameLib/WindowCreator/WindowCreator.h"
 #include "GameLib/Input/Manager.h"
+#include "GameLib/FileIO/Manager.h"
+#include "GameLib/Sound/Manager.h"
+#include "GameLib/Graphics/Manager.h"
+#include "GameLib/Graphics/Texture.h"
+#include "GameLib/Math/Vector2.h"
+#include "GameLib/Scene/StringRenderer.h"
+#include "GameLib/Scene/Font.h"
+#include "GameLib/Threading/Functions.h"
+#include "GameLib/Threading/Manager.h"
+
+#include "GameLib/Input/Keyboard.h"
 
 #include "Framework.h"
 #include "FontTextureGenerated.h"
