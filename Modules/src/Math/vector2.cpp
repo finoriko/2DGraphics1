@@ -1,4 +1,4 @@
-#include "GameLib\Math\Vector2.h"
+#include "GameLib/Math/Vector2.h"
 #include "GameLib/GameLib.h"
 #include "GameLib/Math/Vector2.h"
 #include "GameLib/Math/Functions.h"
