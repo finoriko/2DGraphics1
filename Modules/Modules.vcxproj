@@ -176,6 +176,8 @@
     <ClInclude Include="..\include\GameLib\Math\Functions.h" />
     <ClInclude Include="..\include\GameLib\Math\Random.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector2.h" />
+    <ClInclude Include="..\include\GameLib\Scene\Font.h" />
+    <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
     <ClInclude Include="src\Input\JoystickImpl.h" />

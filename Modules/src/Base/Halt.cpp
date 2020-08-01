@@ -2,6 +2,7 @@
 #include <windows.h>
 #include <cstdio>
 
+
 bool gThrowWhenHalt = false;
 
 // 이 파일에서는 new하지 않도록 배려한다.
