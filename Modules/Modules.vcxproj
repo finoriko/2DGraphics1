@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Base\Halt.cpp" />
+    <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Input\Joystick.cpp" />
     <ClCompile Include="src\Input\Keyboard.cpp" />
     <ClCompile Include="src\Input\Manager.cpp" />
@@ -167,9 +168,11 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
+    <ClInclude Include="..\include\GameLib\Base\Tank.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Manager.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Texture.h" />
+    <ClInclude Include="..\include\GameLib\Graphics\TextureImpl.h" />
     <ClInclude Include="..\include\GameLib\Input\Joystick.h" />
     <ClInclude Include="..\include\GameLib\Input\Keyboard.h" />
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />
