@@ -154,6 +154,7 @@
     <ClCompile Include="src\Math\Random.cpp" />
     <ClCompile Include="src\Math\vector2.cpp" />
     <ClCompile Include="src\Scene\Font.cpp" />
+    <ClCompile Include="src\Scene\StringRenderer.cpp" />
     <ClCompile Include="src\Threading\Functions.cpp" />
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
   </ItemGroup>

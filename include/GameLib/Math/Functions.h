@@ -25,7 +25,7 @@ namespace GameLib
 		float sqrt(float); //Á¦°ö±Ù
 
 		const float EPSILON = 0.00000011920928955078125f; //floatªÎùÚÍ£ïñÓø(1/2^23)
-		const float FLOAT_MAX = 1.7014117331926442990585209174226e+38; //floatªÎõÌÓŞö·((2^24-1)/2^23 * 2^126 )
+		const float FLOAT_MAX = 1.7014117331926442990585209174226e+38; //floatÀÇ ÃÖ´ë°ª((2^24-1)/2^23 * 2^126 )
 
 		bool isSpecial(float); //NaN,Inf¸étrue
 	}
