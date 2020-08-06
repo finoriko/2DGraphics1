@@ -152,7 +152,8 @@
     <ClCompile Include="src\Input\Mouse.cpp" />
     <ClCompile Include="src\Math\Functions.cpp" />
     <ClCompile Include="src\Math\Random.cpp" />
-    <ClCompile Include="src\Math\vector2.cpp" />
+    <ClCompile Include="src\Math\Vector2.cpp" />
+    <ClCompile Include="src\Math\Vector3.cpp" />
     <ClCompile Include="src\Scene\Font.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
     <ClCompile Include="src\Threading\Functions.cpp" />
@@ -181,6 +182,7 @@
     <ClInclude Include="..\include\GameLib\Math\Functions.h" />
     <ClInclude Include="..\include\GameLib\Math\Random.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector2.h" />
+    <ClInclude Include="..\include\GameLib\Math\Vector3.h" />
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
     <ClInclude Include="..\include\GameLib\Scene\FontImpl.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
