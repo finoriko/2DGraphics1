@@ -173,6 +173,7 @@
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Manager.h" />
+    <ClInclude Include="..\include\GameLib\Graphics\TankImpl.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Texture.h" />
     <ClInclude Include="..\include\GameLib\Graphics\TextureImpl.h" />
     <ClInclude Include="..\include\GameLib\Input\Joystick.h" />
