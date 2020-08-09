@@ -3,19 +3,19 @@
 
 namespace GameLib{
 
-/*参照カウンタ式共有ポインタ
+	/*참조 카운터식 공유 포인터
 
-スレッドセーフではないことに注意。
-ConstSharedPtrは元の型のconst関数しか呼ばせたくない時のために
-あるもので、ConstSharedPtrとあるところはSharedPtrでもいい。
+	쓰레드 세이프가 아님에 주의.
+	ConstSharedPtr은 원래 형태의 const함수밖에 부르게 하고 싶지 않을 때를 위해
+	어떤 것으로 Const Shared Ptr 어떤 곳은 Shared Ptr도 된다.
 
-ConstSharedPtr< int > foo(){
-   return SharedPtr< int >( 0 );
-}
-や、
-ConstSharedPtr< int > a = SharedPtr< int >();
-がオーケーだということだ。
-*/
+	ConstSharedPtr<int > foo(){
+	return Shared Ptr<int >( 0 );
+	}
+	야,
+	ConstSharedPtr<int > a = Shared Ptr < int >();
+	가 오케이라는 것이다.
+	*/
 template< class T > class SharedPtr{
 public:
 	SharedPtr();

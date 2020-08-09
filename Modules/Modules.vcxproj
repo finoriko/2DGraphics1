@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -185,12 +185,14 @@
     <ClInclude Include="..\include\GameLib\Math\Vector2.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector3.h" />
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
-    <ClInclude Include="..\include\GameLib\Scene\FontImpl.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
     <ClInclude Include="src\Input\JoystickImpl.h" />
     <ClInclude Include="src\Input\ManagerImpl.h" />
+    <ClInclude Include="src\Scene\FontImpl.h" />
+    <ClInclude Include="src\Scene\FontImplBitmap.h" />
+    <ClInclude Include="src\Scene\FontImplOS.h" />
     <ClInclude Include="src\WindowCreator\resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

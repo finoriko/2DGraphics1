@@ -140,9 +140,6 @@
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Scene\FontImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\GameLib\Graphics\TextureImpl.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -153,6 +150,15 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Graphics\TankImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\FontImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\FontImplBitmap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\FontImplOS.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
