@@ -18,12 +18,12 @@ namespace GameLib {
 		public:
 			///비트맵 글꼴 하나하나에 필요한 데이터
 			struct BitmapChar {
-				unsigned shortmCode; // 문자코드(SHIFT_JIS)
-				unsigned shortmX; // 왼쪽 끝
+				unsigned short mCode; // 문자코드(SHIFT_JIS)
+				unsigned short mX; // 왼쪽 끝
 				unsigned short mY; // 상단
-				unsigned charmTexturePage; // 텍스처 페이지
-				unsigned charmWidth; // 폭 정보(픽셀)
-				unsigned charmHeight; // 높이 정보(픽셀)
+				unsigned char mTexturePage; // 텍스처 페이지
+				unsigned char mWidth; // 폭 정보(픽셀)
+				unsigned char mHeight; // 높이 정보(픽셀)
 			};
 			////// 텍스처를 사용한 비트맵 폰트를 생성.문자의 높이는 최대치를 채용.
 			static Font create(
