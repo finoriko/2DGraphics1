@@ -169,15 +169,14 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\TankImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Enum.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Manager.h" />
-    <ClInclude Include="..\include\GameLib\Graphics\TankImpl.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Texture.h" />
-    <ClInclude Include="..\include\GameLib\Graphics\TextureImpl.h" />
     <ClInclude Include="..\include\GameLib\Input\Joystick.h" />
     <ClInclude Include="..\include\GameLib\Input\Keyboard.h" />
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />
@@ -190,6 +189,7 @@
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
+    <ClInclude Include="src\Graphics\TextureImpl.h" />
     <ClInclude Include="src\Input\JoystickImpl.h" />
     <ClInclude Include="src\Input\ManagerImpl.h" />
     <ClInclude Include="src\Scene\FontImpl.h" />

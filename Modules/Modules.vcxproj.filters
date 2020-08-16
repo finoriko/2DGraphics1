@@ -143,16 +143,10 @@
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\TextureImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\GameLib\Base\Tank.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Math\Vector3.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\TankImpl.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="src\Scene\FontImpl.h">
@@ -165,6 +159,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Graphics\Enum.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\TankImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\TextureImpl.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
