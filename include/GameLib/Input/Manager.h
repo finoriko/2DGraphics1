@@ -1,17 +1,19 @@
 #ifndef INCLUDED_GAMELIB_INPUT_MANAGER_H
 #define INCLUDED_GAMELIB_INPUT_MANAGER_H
-namespace GmaeLib
+namespace GameLib
 {
 	namespace Math
 	{
 		class Vector2;
 	}
-	namespace Input {
+	namespace Input 
+	{
 		class Keyboard;
 		class Mouse;
 		class Joystick;
 
-		class Manager {
+		class Manager 
+		{
 		public:
 			Manager();
 			static Manager instance();

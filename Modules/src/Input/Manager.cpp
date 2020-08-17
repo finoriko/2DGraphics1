@@ -6,7 +6,8 @@
 
 #include "Input/ManagerImpl.h"
 
-namespace GameLib {
+namespace GameLib 
+{
 	namespace Input {
 
 		ManagerImpl* gManagerImpl; //유일 인스턴스
