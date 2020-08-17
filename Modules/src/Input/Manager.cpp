@@ -4,7 +4,7 @@
 #include "GameLib/Input/Mouse.h"
 #include "GameLib/Input/Joystick.h"
 
-#include "ManagerImpl.h"
+#include "Input/ManagerImpl.h"
 
 namespace GameLib {
 	namespace Input {

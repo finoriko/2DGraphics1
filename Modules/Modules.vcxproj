@@ -144,8 +144,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Base\Conversion.cpp" />
     <ClCompile Include="src\Base\DebugStream.cpp" />
     <ClCompile Include="src\Base\Halt.cpp" />
+    <ClCompile Include="src\Base\OStringStream.cpp" />
+    <ClCompile Include="src\Base\RefString.cpp" />
+    <ClCompile Include="src\Graphics\Manager.cpp" />
     <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Input\Joystick.cpp" />
     <ClCompile Include="src\Input\Keyboard.cpp" />
@@ -158,11 +162,13 @@
     <ClCompile Include="src\Scene\Font.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
     <ClCompile Include="src\Threading\Functions.cpp" />
+    <ClCompile Include="src\Threading\Mutex.cpp" />
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\Base\Array.h" />
     <ClInclude Include="..\include\GameLib\Base\AutoPtr.h" />
+    <ClInclude Include="..\include\GameLib\Base\Conversion.h" />
     <ClInclude Include="..\include\GameLib\Base\DebugStream.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h" />
@@ -171,6 +177,9 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\TankImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
+    <ClInclude Include="..\include\GameLib\Base\OStringStream.h" />
+    <ClInclude Include="..\include\GameLib\Base\OStringStreamImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\RefString.h" />
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
@@ -188,7 +197,9 @@
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
+    <ClInclude Include="..\include\GameLib\Threading\Mutex.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
+    <ClInclude Include="src\Graphics\ManagerImpl.h" />
     <ClInclude Include="src\Graphics\TextureImpl.h" />
     <ClInclude Include="src\Input\JoystickImpl.h" />
     <ClInclude Include="src\Input\ManagerImpl.h" />
