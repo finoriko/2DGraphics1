@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -159,6 +159,7 @@
     <ClCompile Include="src\Math\Random.cpp" />
     <ClCompile Include="src\Math\Vector2.cpp" />
     <ClCompile Include="src\Math\Vector3.cpp" />
+    <ClCompile Include="src\Math\Vector4.cpp" />
     <ClCompile Include="src\Scene\Font.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
     <ClCompile Include="src\Threading\Functions.cpp" />
@@ -194,13 +195,20 @@
     <ClInclude Include="..\include\GameLib\Math\Random.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector2.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector3.h" />
+    <ClInclude Include="..\include\GameLib\Math\Vector4.h" />
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
     <ClInclude Include="..\include\GameLib\Threading\Mutex.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
+    <ClInclude Include="src\Graphics\IndexBufferImpl.h" />
     <ClInclude Include="src\Graphics\ManagerImpl.h" />
+    <ClInclude Include="src\Graphics\NoLightingVsGenerated.h" />
+    <ClInclude Include="src\Graphics\PixelLightingPsGenerated.h" />
+    <ClInclude Include="src\Graphics\PixelLightingVsGenerated.h" />
     <ClInclude Include="src\Graphics\TextureImpl.h" />
+    <ClInclude Include="src\Graphics\VertexBufferImpl.h" />
+    <ClInclude Include="src\Graphics\VertexLightingVsGenerated.h" />
     <ClInclude Include="src\Input\JoystickImpl.h" />
     <ClInclude Include="src\Input\ManagerImpl.h" />
     <ClInclude Include="src\Scene\FontImpl.h" />
