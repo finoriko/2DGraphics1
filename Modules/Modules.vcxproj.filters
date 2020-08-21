@@ -245,5 +245,11 @@
     <ClInclude Include="..\include\GameLib\PseudoXml\Attribute.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="src\PseudoXml\DocumentImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PseudoXml\AttributeImpl.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

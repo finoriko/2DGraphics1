@@ -218,6 +218,8 @@
     <ClInclude Include="src\Graphics\VertexLightingVsGenerated.h" />
     <ClInclude Include="src\Input\JoystickImpl.h" />
     <ClInclude Include="src\Input\ManagerImpl.h" />
+    <ClInclude Include="src\PseudoXml\AttributeImpl.h" />
+    <ClInclude Include="src\PseudoXml\DocumentImpl.h" />
     <ClInclude Include="src\Scene\FontImpl.h" />
     <ClInclude Include="src\Scene\FontImplBitmap.h" />
     <ClInclude Include="src\Scene\FontImplOS.h" />
