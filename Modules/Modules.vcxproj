@@ -176,6 +176,7 @@
     <ClInclude Include="..\include\GameLib\Base\DebugStream.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\PoolImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
     <ClInclude Include="..\include\GameLib\Base\OStringStream.h" />
     <ClInclude Include="..\include\GameLib\Base\OStringStreamImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Pool.h" />
     <ClInclude Include="..\include\GameLib\Base\RefString.h" />
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
