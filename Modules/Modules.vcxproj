@@ -157,6 +157,8 @@
     <ClCompile Include="src\Input\Manager.cpp" />
     <ClCompile Include="src\Input\Mouse.cpp" />
     <ClCompile Include="src\Math\Functions.cpp" />
+    <ClCompile Include="src\Math\Matrix34.cpp" />
+    <ClCompile Include="src\Math\Matrix44.cpp" />
     <ClCompile Include="src\Math\Random.cpp" />
     <ClCompile Include="src\Math\Vector2.cpp" />
     <ClCompile Include="src\Math\Vector3.cpp" />
@@ -199,6 +201,8 @@
     <ClInclude Include="..\include\GameLib\Input\Manager.h" />
     <ClInclude Include="..\include\GameLib\Input\Mouse.h" />
     <ClInclude Include="..\include\GameLib\Math\Functions.h" />
+    <ClInclude Include="..\include\GameLib\Math\Matrix34.h" />
+    <ClInclude Include="..\include\GameLib\Math\Matrix44.h" />
     <ClInclude Include="..\include\GameLib\Math\Random.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector2.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector3.h" />
