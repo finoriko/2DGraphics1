@@ -93,6 +93,9 @@
     <ClCompile Include="src\Math\Matrix34.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Math\Matrix33.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
@@ -267,6 +270,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Math\Matrix34.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Matrix33.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
