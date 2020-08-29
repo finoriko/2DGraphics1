@@ -228,6 +228,7 @@
     <ClInclude Include="src\Input\ManagerImpl.h" />
     <ClInclude Include="src\PseudoXml\AttributeImpl.h" />
     <ClInclude Include="src\PseudoXml\DocumentImpl.h" />
+    <ClInclude Include="src\PseudoXml\ElementImpl.h" />
     <ClInclude Include="src\Scene\FontImpl.h" />
     <ClInclude Include="src\Scene\FontImplBitmap.h" />
     <ClInclude Include="src\Scene\FontImplOS.h" />
