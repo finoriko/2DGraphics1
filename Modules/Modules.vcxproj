@@ -149,6 +149,7 @@
     <ClCompile Include="src\Base\Halt.cpp" />
     <ClCompile Include="src\Base\OStringStream.cpp" />
     <ClCompile Include="src\Base\RefString.cpp" />
+    <ClCompile Include="src\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="src\Graphics\Manager.cpp" />
     <ClCompile Include="src\Graphics\Texture.cpp" />
     <ClCompile Include="src\Graphics\VertexBuffer.cpp" />
@@ -193,6 +194,7 @@
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Enum.h" />
+    <ClInclude Include="..\include\GameLib\Graphics\IndexBuffer.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Manager.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Texture.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Vertex.h" />
