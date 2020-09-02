@@ -191,6 +191,7 @@
     <ClInclude Include="..\include\GameLib\Base\Pool.h" />
     <ClInclude Include="..\include\GameLib\Base\RefString.h" />
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
+    <ClInclude Include="..\include\GameLib\Base\Stack.h" />
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Enum.h" />
