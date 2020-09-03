@@ -184,6 +184,7 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\StackImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\TankImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
     <ClInclude Include="..\include\GameLib\Base\OStringStream.h" />
