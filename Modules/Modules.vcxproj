@@ -169,9 +169,12 @@
     <ClCompile Include="src\PseudoXml\Element.cpp" />
     <ClCompile Include="src\Scene\Font.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
+    <ClCompile Include="src\Threading\Event.cpp" />
     <ClCompile Include="src\Threading\Functions.cpp" />
     <ClCompile Include="src\Threading\Manager.cpp" />
     <ClCompile Include="src\Threading\Mutex.cpp" />
+    <ClCompile Include="src\Threading\Semaphore.cpp" />
+    <ClCompile Include="src\Threading\Thread.cpp" />
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -218,9 +221,12 @@
     <ClInclude Include="..\include\GameLib\PseudoXml\Element.h" />
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
+    <ClInclude Include="..\include\GameLib\Threading\Event.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
     <ClInclude Include="..\include\GameLib\Threading\Manager.h" />
     <ClInclude Include="..\include\GameLib\Threading\Mutex.h" />
+    <ClInclude Include="..\include\GameLib\Threading\Semaphore.h" />
+    <ClInclude Include="..\include\GameLib\Threading\Thread.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
     <ClInclude Include="src\Graphics\IndexBufferImpl.h" />
     <ClInclude Include="src\Graphics\ManagerImpl.h" />
