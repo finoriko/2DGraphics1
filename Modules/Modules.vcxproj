@@ -170,6 +170,7 @@
     <ClCompile Include="src\Scene\Font.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
     <ClCompile Include="src\Threading\Functions.cpp" />
+    <ClCompile Include="src\Threading\Manager.cpp" />
     <ClCompile Include="src\Threading\Mutex.cpp" />
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp" />
   </ItemGroup>
@@ -218,6 +219,7 @@
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
+    <ClInclude Include="..\include\GameLib\Threading\Manager.h" />
     <ClInclude Include="..\include\GameLib\Threading\Mutex.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
     <ClInclude Include="src\Graphics\IndexBufferImpl.h" />
@@ -236,6 +238,7 @@
     <ClInclude Include="src\Scene\FontImpl.h" />
     <ClInclude Include="src\Scene\FontImplBitmap.h" />
     <ClInclude Include="src\Scene\FontImplOS.h" />
+    <ClInclude Include="src\Threading\ManagerImpl.h" />
     <ClInclude Include="src\WindowCreator\resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
