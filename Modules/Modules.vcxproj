@@ -147,6 +147,7 @@
     <ClCompile Include="src\Base\Conversion.cpp" />
     <ClCompile Include="src\Base\DebugStream.cpp" />
     <ClCompile Include="src\Base\Halt.cpp" />
+    <ClCompile Include="src\Base\IBinaryStream.cpp" />
     <ClCompile Include="src\Base\OStringStream.cpp" />
     <ClCompile Include="src\Base\RefString.cpp" />
     <ClCompile Include="src\Graphics\IndexBuffer.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="..\include\GameLib\Base\AutoPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\Conversion.h" />
     <ClInclude Include="..\include\GameLib\Base\DebugStream.h" />
+    <ClInclude Include="..\include\GameLib\Base\IBinaryStream.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\PoolImpl.h" />

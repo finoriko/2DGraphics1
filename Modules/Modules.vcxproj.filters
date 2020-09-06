@@ -111,6 +111,9 @@
     <ClCompile Include="src\Threading\Event.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\Base\IBinaryStream.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
@@ -315,6 +318,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Threading\Semaphore.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\IBinaryStream.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
