@@ -200,6 +200,8 @@
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\Stack.h" />
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
+    <ClInclude Include="..\include\GameLib\FileIO\InFile.h" />
+    <ClInclude Include="..\include\GameLib\FileIO\Manager.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Enum.h" />
     <ClInclude Include="..\include\GameLib\Graphics\IndexBuffer.h" />
