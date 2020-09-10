@@ -167,6 +167,7 @@
     <ClCompile Include="src\Math\Vector3.cpp" />
     <ClCompile Include="src\Math\Vector4.cpp" />
     <ClCompile Include="src\PseudoXml\Attribute.cpp" />
+    <ClCompile Include="src\PseudoXml\Document.cpp" />
     <ClCompile Include="src\PseudoXml\Element.cpp" />
     <ClCompile Include="src\Scene\Font.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="..\include\GameLib\Math\Vector3.h" />
     <ClInclude Include="..\include\GameLib\Math\Vector4.h" />
     <ClInclude Include="..\include\GameLib\PseudoXml\Attribute.h" />
+    <ClInclude Include="..\include\GameLib\PseudoXml\Document.h" />
     <ClInclude Include="..\include\GameLib\PseudoXml\Element.h" />
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
