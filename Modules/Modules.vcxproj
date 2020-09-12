@@ -169,6 +169,7 @@
     <ClCompile Include="src\PseudoXml\Attribute.cpp" />
     <ClCompile Include="src\PseudoXml\Document.cpp" />
     <ClCompile Include="src\PseudoXml\Element.cpp" />
+    <ClCompile Include="src\PseudoXml\Tag.cpp" />
     <ClCompile Include="src\Scene\Font.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
     <ClCompile Include="src\Threading\Event.cpp" />
@@ -247,6 +248,7 @@
     <ClInclude Include="src\PseudoXml\AttributeImpl.h" />
     <ClInclude Include="src\PseudoXml\DocumentImpl.h" />
     <ClInclude Include="src\PseudoXml\ElementImpl.h" />
+    <ClInclude Include="src\PseudoXml\Tag.h" />
     <ClInclude Include="src\Scene\FontImpl.h" />
     <ClInclude Include="src\Scene\FontImplBitmap.h" />
     <ClInclude Include="src\Scene\FontImplOS.h" />
