@@ -194,6 +194,7 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\StackImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\TankImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\VectorImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
     <ClInclude Include="..\include\GameLib\Base\OStringStream.h" />
     <ClInclude Include="..\include\GameLib\Base\OStringStreamImpl.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\Stack.h" />
     <ClInclude Include="..\include\GameLib\Base\Tank.h" />
+    <ClInclude Include="..\include\GameLib\Base\Vector.h" />
     <ClInclude Include="..\include\GameLib\FileIO\InFile.h" />
     <ClInclude Include="..\include\GameLib\FileIO\Manager.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
