@@ -144,6 +144,59 @@ namespace GameLib
 					}
 				}
 			}
+			void getViewport(int* x, int* y, int* w, int* h) {
+				if (x) {
+					*x = mViewport.X;
+				}
+				if (y) {
+					*y = mViewport.Y;
+				}
+				if (w) {
+					*w = mViewport.Width;
+				}
+				if (h) {
+					*h = mViewport.Height;
+				}
+			}
+			void blendToScreen(Texture::Impl* t) {
+				setTexture(t);
+				setBlendMode(BLEND_LINEAR);
+				enableDepthTest(false);
+				enableDepthWrite(false);
+				Matrix44 pvm;
+				pvm.setIdentity();
+				setProjectionViewMatrix(pvm);
+				Matrix34 wm;
+				wm.setIdentity();
+				setWorldMatrix(wm);
+				setVertexBuffer(mFullScreenQuadVertexBuffer);
+				draw(0, 1);
+				setTexture(0); //뒷정리. set한 사람이 되돌리는 약속으로 한다.
+			}
+			void enableFullScreen(bool f) {
+				if (f != mFullScreen) {
+					mFullScreen = f;
+					mCanRender = false; //의도적으로 디바이스 로스트 상태에
+				}
+			}
+			void getPointerModifier(float* scale, Vector2* offset) {
+				float dw = static_cast<float>(mPresentParameters.BackBufferWidth);
+				float dh = static_cast<float>(mPresentParameters.BackBufferHeight);
+				float rw = static_cast<float>(mWidth);
+				float rh = static_cast<float>(mHeight);
+				float wRatio = rw / dw;
+				float hRatio = rh / dh;
+				if (wRatio > hRatio) { //옆에 맞추다.
+					*scale = wRatio;
+					offset->x = 0.f;
+					offset->y = (dh - (rh / wRatio)) * -0.5f;
+				}
+				else { //세로로 맞추다
+					*scale = hRatio;
+					offset->x = (dw - (rw / hRatio)) * -0.5f;
+					offset->y = 0.f;
+				}
+			}
 			void setLightPosition(int index, const Vector3& position) {
 				mLightPositionXs[index] = position.x;
 				mLightPositionYs[index] = position.y;
