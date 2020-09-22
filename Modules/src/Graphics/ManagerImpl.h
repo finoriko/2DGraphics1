@@ -144,6 +144,311 @@ namespace GameLib
 					}
 				}
 			}
+			void setTexture(Texture::Impl* o) {
+				if (mCurrentTexture == o) {
+					return;
+				}
+				HRESULT hr;
+				IDirect3DTexture9* dxObj = (o) ? o->mDxObject : 0;
+				hr = mDevice->SetTexture(0, dxObj);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetTexture : INVALID CALL");
+				if (mCurrentTexture) {
+					mCurrentTexture->release(); //카운트 줄이기
+					if (mCurrentTexture->referenceCount() == 0) {
+						SAFE_DELETE(mCurrentTexture);
+					}
+				}
+				mCurrentTexture = o;
+				if (o) {
+					o->refer();
+				}
+			}
+			void setVertexBuffer(VertexBuffer::Impl* o) {
+				if (mCurrentVertexBuffer == o) {
+					return;
+				}
+				HRESULT hr;
+				IDirect3DVertexBuffer9* dxObj = (o) ? o->mDxObject : 0;
+				hr = mDevice->SetStreamSource(0, dxObj, 0, sizeof(Vertex)); //Strideきめうち
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetStreamSource : INVALID CALL");
+				if (mCurrentVertexBuffer) {
+					mCurrentVertexBuffer->release();
+					if (mCurrentVertexBuffer->referenceCount() == 0) {
+						SAFE_DELETE(mCurrentVertexBuffer);
+					}
+				}
+				mCurrentVertexBuffer = o;
+				if (o) {
+					o->refer();
+				}
+			}
+			void setIndexBuffer(IndexBuffer::Impl* o) {
+				if (mCurrentIndexBuffer == o) {
+					return;
+				}
+				HRESULT hr;
+				IDirect3DIndexBuffer9* dxObj = (o) ? o->mDxObject : 0;
+				hr = mDevice->SetIndices(dxObj);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetIndices : INVALID CALL");
+				if (mCurrentIndexBuffer) {
+					mCurrentIndexBuffer->release();
+					if (mCurrentIndexBuffer->referenceCount() == 0) {
+						SAFE_DELETE(mCurrentIndexBuffer);
+					}
+				}
+				mCurrentIndexBuffer = o;
+				if (o) {
+					o->refer();
+				}
+			}
+			void enableDepthTest(bool f) {
+				BOOL tf = (f) ? TRUE : FALSE;
+				if (mCurrentDepthTest == tf) {
+					return;
+				}
+				HRESULT hr;
+				hr = mDevice->SetRenderState(D3DRS_ZENABLE, tf);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState error : INVALID CALL");
+				mCurrentDepthTest = tf;
+			}
+			void enableDepthWrite(bool f) {
+				BOOL tf = (f) ? TRUE : FALSE;
+				if (mCurrentDepthWrite == tf) {
+					return;
+				}
+				HRESULT hr;
+				hr = mDevice->SetRenderState(D3DRS_ZWRITEENABLE, tf);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState error : INVALID CALL");
+				mCurrentDepthWrite = tf;
+			}
+			void setBlendMode(BlendMode b) {
+				BOOL alphaBlend;
+				D3DBLEND dstBlend;
+				BOOL alphaTest;
+				if (b == BLEND_OPAQUE) {
+					alphaBlend = FALSE;
+					dstBlend = D3DBLEND_INVSRCALPHA;
+					alphaTest = TRUE;
+				}
+				else {
+					alphaBlend = TRUE;
+					alphaTest = FALSE;
+					if (b == BLEND_LINEAR) {
+						dstBlend = D3DBLEND_INVSRCALPHA;
+					}
+					else {
+						dstBlend = D3DBLEND_ONE;
+					}
+				}
+				HRESULT hr;
+				if (mCurrentAlphaBlend != alphaBlend) {
+					hr = mDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, alphaBlend);
+					STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+					mCurrentAlphaBlend = alphaBlend;
+				}
+				if (mCurrentDestBlend != dstBlend) {
+					hr = mDevice->SetRenderState(D3DRS_DESTBLEND, dstBlend);
+					STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+					mCurrentDestBlend = dstBlend;
+				}
+				if (mCurrentAlphaTest != alphaTest) {
+					hr = mDevice->SetRenderState(D3DRS_ALPHATESTENABLE, alphaTest);
+					STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+					mCurrentAlphaTest = alphaTest;
+				}
+			}
+			void setTextureFilter(TextureFilter f) {
+				D3DTEXTUREFILTERTYPE dxMinF = D3DTEXF_NONE;
+				D3DTEXTUREFILTERTYPE dxMagF = D3DTEXF_NONE;
+				D3DTEXTUREFILTERTYPE dxMipF = D3DTEXF_NONE;
+				if (f == TEXTURE_FILTER_POINT) {
+					dxMinF = D3DTEXF_POINT;
+					dxMagF = D3DTEXF_POINT;
+					dxMipF = D3DTEXF_NONE;
+				}
+				else if (f == TEXTURE_FILTER_LINEAR) { //리니어라고 말하지만 안이소?GO!
+					dxMinF = mBestMinFilter;
+					dxMagF = mBestMagFilter;
+					dxMipF = mBestMipFilter;
+				}
+				HRESULT hr;
+				if (mCurrentMinFilter != dxMinF) {
+					mCurrentMinFilter = dxMinF;
+					hr = mDevice->SetSamplerState(0, D3DSAMP_MINFILTER, dxMinF);
+					STRONG_ASSERT(SUCCEEDED(hr) && "SetSamplerState : INVALID CALL");
+				}
+				if (mCurrentMagFilter != dxMagF) {
+					mCurrentMagFilter = dxMagF;
+					hr = mDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, dxMagF);
+					STRONG_ASSERT(SUCCEEDED(hr) && "SetSamplerState : INVALID CALL");
+				}
+				if (mCurrentMipFilter != dxMipF) {
+					mCurrentMipFilter = dxMipF;
+					hr = mDevice->SetSamplerState(0, D3DSAMP_MIPFILTER, dxMipF);
+					STRONG_ASSERT(SUCCEEDED(hr) && "SetSamplerState : INVALID CALL");
+				}
+			}
+			void setCullMode(CullMode c) {
+				D3DCULL mode = D3DCULL_NONE;
+				switch (c) {
+				case CULL_NONE: mode = D3DCULL_NONE; break;
+				case CULL_BACK: mode = D3DCULL_CW; break;
+				case CULL_FRONT: mode = D3DCULL_CCW; break;
+				}
+				if (mCurrentCullMode == mode) {
+					return;
+				}
+				HRESULT hr;
+				hr = mDevice->SetRenderState(D3DRS_CULLMODE, mode);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+
+				mCurrentCullMode = mode;
+			}
+			void setProjectionViewMatrix(const Matrix44& m) {
+				if (mProjectionViewMatrix != m) { //조금이라도 다르다면
+					mProjectionViewMatrix = m;
+					mMatricesChanged = true;
+				}
+			}
+			void setWorldMatrix(const Matrix34& m) {
+				if (mWorldMatrix != m) { //조금이라도 다르다면
+					mWorldMatrix = m;
+					mMatricesChanged = true;
+				}
+			}
+			void sendMatrices() {
+				HRESULT hr;
+				//DX용 0.5픽셀 밀링이 있는 최종 변환 행렬
+				/*
+				x,y를 어긋나게 하는 행렬 O를 만들고
+				O*PV*W
+				과 곱하여 최종 행렬로 삼는다.
+
+				그러나 O는 03, 13의 두 요소에 의미가 있고 다른 것은 의미가 없는 행렬이다.
+				따라서 행렬연산을 풀세트하는 것은 어리석다.
+
+				1 0 0 X    a b c d   a+Xm b+Xn c+Xo d+Xp
+				0 1 0 Y  * e f g h = e+Ym f+Yn g+Yo h+Yp
+				0 0 1 0    i j k l   i    j    k    l
+				0 0 0 1    m n o p   m    n    o    p
+				*/
+				Matrix44 pvwm;
+				pvwm.setMul(mProjectionViewMatrix, mWorldMatrix);
+				float x = -1.f / static_cast<float>(mPresentParameters.BackBufferWidth);
+				float y = 1.f / static_cast<float>(mPresentParameters.BackBufferHeight);
+				pvwm.m00 += x * pvwm.m30;
+				pvwm.m01 += x * pvwm.m31;
+				pvwm.m02 += x * pvwm.m32;
+				pvwm.m03 += x * pvwm.m33;
+				pvwm.m10 += y * pvwm.m30;
+				pvwm.m11 += y * pvwm.m31;
+				pvwm.m12 += y * pvwm.m32;
+				pvwm.m13 += y * pvwm.m33;
+				//법선 변환용 월드 역행렬 전치
+				Matrix34 itwm; //inverseTransposedWorldMatrix
+				itwm.setInverse(mWorldMatrix);
+				itwm.transpose33();
+
+				//전송
+				hr = mDevice->SetVertexShaderConstantF(0, &(pvwm.m00), 4);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetVertexShaderConstantF : INVALID CALL");
+				hr = mDevice->SetVertexShaderConstantF(4, &(mWorldMatrix.m00), 3);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetVertexShaderConstantF : INVALID CALL");
+				hr = mDevice->SetVertexShaderConstantF(7, &(itwm.m00), 3);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetVertexShaderConstantF : INVALID CALL");
+
+				mMatricesChanged = false;
+			}
+			void draw(int offset, int primitiveNumber, PrimitiveType prim = PRIMITIVE_TRIANGLE) {
+				if (mLightChanged) {
+					sendLightingParameters();
+				}
+				if (mMatricesChanged) {
+					sendMatrices();
+				}
+				STRONG_ASSERT(mCurrentVertexBuffer && "VertexBuffer is not set.");
+				if (!mCurrentTexture) { //텍스처가 없으면 더미를 꽂는다.
+					setTexture(mWhiteTexture);
+				}
+				D3DPRIMITIVETYPE dxPrim = D3DPT_TRIANGLELIST;
+				switch (prim) {
+				case PRIMITIVE_TRIANGLE: dxPrim = D3DPT_TRIANGLELIST; break;
+				case PRIMITIVE_LINE: dxPrim = D3DPT_LINELIST; break;
+				case PRIMITIVE_POINT: dxPrim = D3DPT_POINTLIST; break;
+				default: STRONG_ASSERT(0); break;
+				}
+				HRESULT hr;
+				hr = mDevice->DrawPrimitive(
+					dxPrim,
+					offset,
+					primitiveNumber);
+				STRONG_ASSERT(SUCCEEDED(hr) && "DrawPrimitive : INVALID CALL");
+			}
+			void drawIndexed(int offset, int primitiveNumber, PrimitiveType prim = PRIMITIVE_TRIANGLE) {
+				if (mLightChanged) {
+					sendLightingParameters();
+				}
+				if (mMatricesChanged) {
+					sendMatrices();
+				}
+				STRONG_ASSERT(mCurrentIndexBuffer && "IndexBuffer is not set.");
+				STRONG_ASSERT(mCurrentVertexBuffer && "VertexBuffer is not set.");
+				if (!mCurrentTexture) { //텍스처가 없으면 더미를 꽂는다.
+					setTexture(mWhiteTexture);
+				}
+				int vertexNumber = mCurrentVertexBuffer->mVertexNumber;
+				D3DPRIMITIVETYPE dxPrim = D3DPT_TRIANGLELIST;
+				switch (prim) {
+				case PRIMITIVE_TRIANGLE: dxPrim = D3DPT_TRIANGLELIST; break;
+				case PRIMITIVE_LINE: dxPrim = D3DPT_LINELIST; break;
+				case PRIMITIVE_POINT: dxPrim = D3DPT_POINTLIST; break;
+				default: STRONG_ASSERT(0); break;
+				}
+				HRESULT hr;
+				hr = mDevice->DrawIndexedPrimitive(
+					dxPrim,
+					0,
+					0,
+					vertexNumber,
+					offset,
+					primitiveNumber);
+				STRONG_ASSERT(SUCCEEDED(hr) && "DrawPrimitive : INVALID CALL");
+			}
+			void setViewport(int x, int y, int w, int h) {
+				mViewport.X = static_cast<DWORD>(x);
+				mViewport.Y = static_cast<DWORD>(y);
+				mViewport.Width = static_cast<DWORD>(w);
+				mViewport.Height = static_cast<DWORD>(h);
+				//이제, 진짜 뷰포트를 만들까?
+				float dw = static_cast<float>(mPresentParameters.BackBufferWidth);
+				float dh = static_cast<float>(mPresentParameters.BackBufferHeight);
+				float rw = static_cast<float>(mWidth);
+				float rh = static_cast<float>(mHeight);
+				float wRatio = dw / rw;
+				float hRatio = dh / rh;
+				float newX, newY, newW, newH;
+				if (wRatio > hRatio) { //세로로 맞추다. 가로가 남다.
+					newX = (dw - hRatio * rw) * 0.5f + static_cast<float>(x) * hRatio;
+					newY = 0.f;
+					newW = static_cast<float>(w) * hRatio;
+					newH = dh;
+				}
+				else { //옆을 맞추다
+					newX = 0.f;
+					newY = (dh - wRatio * rh) * 0.5f + static_cast<float>(y) * wRatio;
+					newW = dw;
+					newH = static_cast<float>(h) * wRatio;
+				}
+				D3DVIEWPORT9 vp;
+				vp.MaxZ = mViewport.MaxZ;
+				vp.MinZ = mViewport.MinZ;
+				vp.Width = static_cast<DWORD>(newW + 0.5f);
+				vp.Height = static_cast<DWORD>(newH + 0.5f);
+				vp.X = static_cast<DWORD>(newX);
+				vp.Y = static_cast<DWORD>(newY);
+				HRESULT hr = mDevice->SetViewport(&vp);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "SetViewport : INVALID CALL");
+			}
 			void getViewport(int* x, int* y, int* w, int* h) {
 				if (x) {
 					*x = mViewport.X;
