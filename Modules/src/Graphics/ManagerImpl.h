@@ -144,6 +144,100 @@ namespace GameLib
 					}
 				}
 			}
+			void capture() {
+				int w = mPresentParameters.BackBufferWidth;
+				int h = mPresentParameters.BackBufferHeight;
+
+				HRESULT hr;
+				IDirect3DSurface9* srcSurface;
+				hr = mDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &srcSurface);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "GetBackBuffer : INVALID CALL");
+				//기입측
+				IDirect3DSurface9* tmpSurface;
+				hr = mDevice->CreateRenderTarget(
+					w,
+					h,
+					D3DFMT_X8R8G8B8,
+					D3DMULTISAMPLE_NONE,
+					0,
+					TRUE,
+					&tmpSurface,
+					NULL);
+				STRONG_ASSERT(hr != D3DERR_NOTAVAILABLE && "CreateRenderTarget : NOT AVAILABLE");
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "CreateRenderTarget : INVALID CALL");
+				STRONG_ASSERT(hr != D3DERR_OUTOFVIDEOMEMORY && "CreateRenderTarget : OUT OF VIDEO MEMORY");
+				STRONG_ASSERT(hr != E_OUTOFMEMORY && "CreateRenderTarget : OUT OF MEMORY");
+				//MSAA 분리
+				hr = mDevice->StretchRect(srcSurface, NULL, tmpSurface, NULL, D3DTEXF_POINT);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "StretchRect : INVALID CALL");
+				//// 메모리측 서피스 생성
+				IDirect3DSurface9* dstSurface;
+				hr = mDevice->CreateOffscreenPlainSurface(w, h, D3DFMT_X8R8G8B8, D3DPOOL_SYSTEMMEM, &dstSurface, NULL);
+				//메모리로 데이터 전송
+				hr = mDevice->GetRenderTargetData(tmpSurface, dstSurface);
+				//다음에 잠그고 읽으면서 쓰기
+				D3DLOCKED_RECT rect;
+				hr = dstSurface->LockRect(&rect, NULL, D3DLOCK_READONLY);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "LockRect : INVALID CALL");
+				Texture::Impl::write(mCaptureFilename.c_str(), w, h, rect.Pitch, static_cast<const unsigned*>(rect.pBits));
+				hr = dstSurface->UnlockRect();
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "UnlockRect : INVALID CALL");
+				//뒤처리
+				dstSurface->Release();
+				dstSurface = 0;
+				tmpSurface->Release();
+				tmpSurface = 0;
+				srcSurface->Release();
+				srcSurface = 0;
+				mCaptureRequest = false;
+			}
+			void restore() {
+				if (mCanRender) {
+					return; //리스토어 필요없어
+				}
+				HRESULT hr = mDevice->TestCooperativeLevel();
+				STRONG_ASSERT(hr != D3DERR_DRIVERINTERNALERROR && "TestCooperativeLevel : DRIVER INTERNAL ERROR");
+				if (hr == D3D_OK || hr == D3DERR_DEVICENOTRESET) { //리셋할거야
+					//풀스크린과 창으로 분리
+					if (mFullScreen) {
+						mPresentParameters.Windowed = FALSE;
+						mPresentParameters.BackBufferWidth = mFullScreenWindowWidth;
+						mPresentParameters.BackBufferHeight = mFullScreenWindowHeight;
+						if (mMsaaQualityFullScreen > 0) {
+							mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONMASKABLE;
+							mPresentParameters.MultiSampleQuality = mMsaaQualityFullScreen - 1;
+						}
+						else {
+							mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
+							mPresentParameters.MultiSampleQuality = 0;
+						}
+					}
+					else {
+						mPresentParameters.Windowed = TRUE;
+						mPresentParameters.BackBufferWidth = mWidth;
+						mPresentParameters.BackBufferHeight = mHeight;
+						if (mMsaaQualityWindowed > 0) {
+							mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONMASKABLE;
+							mPresentParameters.MultiSampleQuality = mMsaaQualityWindowed - 1;
+						}
+						else {
+							mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
+							mPresentParameters.MultiSampleQuality = 0;
+						}
+					}
+					hr = mDevice->Reset(&mPresentParameters);
+					STRONG_ASSERT(hr != D3DERR_DRIVERINTERNALERROR && "Reset : DRIVER INTERNAL ERROR");
+					STRONG_ASSERT(hr != D3DERR_OUTOFVIDEOMEMORY && "Reset : OUT OF VIDEO MEMORY");
+					if (SUCCEEDED(hr)) {
+						setInitialStates(); //디바이스가 날아갔으므로 일부 재설정
+						mCanRender = true; //오케이
+						cout << "Graphics-restore() : Direct3D Device Reset Succeeded" << endl;
+					}
+					else {
+						cout << "Graphics-restore() : Direct3D Device Reset Failed" << endl;
+					}
+				}
+			}
 			void setTexture(Texture::Impl* o) {
 				if (mCurrentTexture == o) {
 					return;
