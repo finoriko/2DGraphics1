@@ -191,6 +191,131 @@ namespace GameLib
 				srcSurface = 0;
 				mCaptureRequest = false;
 			}
+			//부팅시 Device Lost 후에 부른다.기본적으로 아무 일도 없으면 한번에 좋은 스테이트 군
+			void setInitialStates() {
+				HRESULT hr;
+				//정점선언 세트
+				hr = mDevice->SetVertexDeclaration(mVertexDeclaration);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetVertexDeclaration : INVALID CALL");
+				//쉐이더 세트
+				setShader();
+				//만지지 않는 스테이트 세트
+				hr = mDevice->SetRenderState(D3DRS_ALPHAREF, 0x80);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATEREQUAL);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetTextureStageState : INVALID CALL");
+				hr = mDevice->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetTextureStageState : INVALID CALL");
+				hr = mDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetSamplerState(0, D3DSAMP_MAXANISOTROPY, mMaxAnisotropy);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+
+				//재설정
+				hr = mDevice->SetRenderState(D3DRS_CULLMODE, mCurrentCullMode);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetRenderState(D3DRS_ZENABLE, mCurrentDepthTest);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetRenderState(D3DRS_ZWRITEENABLE, mCurrentDepthWrite);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, mCurrentAlphaBlend);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetRenderState(D3DRS_DESTBLEND, mCurrentDestBlend);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetRenderState(D3DRS_ALPHATESTENABLE, mCurrentAlphaTest);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetRenderState : INVALID CALL");
+				hr = mDevice->SetSamplerState(0, D3DSAMP_MINFILTER, mCurrentMinFilter);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetSamplerState : INVALID CALL");
+				hr = mDevice->SetSamplerState(0, D3DSAMP_MAGFILTER, mCurrentMagFilter);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetSamplerState : INVALID CALL");
+				hr = mDevice->SetSamplerState(0, D3DSAMP_MIPFILTER, mCurrentMipFilter);
+				STRONG_ASSERT(SUCCEEDED(hr) && "SetSamplerState : INVALID CALL");
+
+				if (mCurrentTexture) {
+					mCurrentTexture->release();
+					mCurrentTexture = 0;
+				}
+				if (mCurrentVertexBuffer) {
+					mCurrentVertexBuffer->release();
+					mCurrentVertexBuffer = 0;
+				}
+				if (mCurrentIndexBuffer) {
+					mCurrentIndexBuffer->release();
+					mCurrentIndexBuffer = 0;
+				}
+				mLightChanged = true; //라이트 보내줘
+				mMatricesChanged = true; //행렬 보내줘
+				//만질 수 있는 표준값 세트
+				setTextureFilter(TEXTURE_FILTER_LINEAR);
+			}
+			void setShader() {
+				HRESULT hr;
+				//셰이더세트
+				if (mLightingMode == LIGHTING_NONE) {
+					hr = mDevice->SetVertexShader(mNoLightingVertexShader);
+					STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "SetVertexShader : INVALID CALL");
+					hr = mDevice->SetPixelShader(0);
+					STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "SetPixelShader : INVALID CALL");
+				}
+				else if (mLightingMode == LIGHTING_PER_VERTEX) {
+					hr = mDevice->SetVertexShader(mVertexLightingVertexShader);
+					STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "SetVertexShader : INVALID CALL");
+					hr = mDevice->SetPixelShader(0);
+					STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "SetPixelShader : INVALID CALL");
+				}
+				else if (mLightingMode == LIGHTING_PER_PIXEL) {
+					hr = mDevice->SetVertexShader(mPixelLightingVertexShader);
+					STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "SetVertexShader : INVALID CALL");
+					hr = mDevice->SetPixelShader(mPixelLightingPixelShader);
+					STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "SetPixelShader : INVALID CALL");
+				}
+			}
+			void beginDraw() {
+				HRESULT hr = mDevice->BeginScene();
+				STRONG_ASSERT(SUCCEEDED(hr) && "BeginScene : DRIVER INTERNAL ERROR");
+				////우선 일단 뷰포트를 전면에 두고 전체 클리어
+				D3DVIEWPORT9 viewport;
+				viewport.X = viewport.Y = 0;
+				viewport.Width = mPresentParameters.BackBufferWidth;
+				viewport.Height = mPresentParameters.BackBufferHeight;
+				viewport.MinZ = 0.f;
+				viewport.MaxZ = 1.f;
+				mDevice->SetViewport(&viewport);
+				//클리어 해 두다
+				hr = mDevice->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0, 1.f, 0);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "Clear : INVALIDCALL");
+				//진짜 뷰포트 설정
+				setViewport(mViewport.X, mViewport.Y, mViewport.Width, mViewport.Height);
+			}
+			void endDraw() {
+				//캡처 처리
+				if (mCaptureRequest && (mCaptureFilename.size() > 0)) {
+					capture();
+				}
+				HRESULT hr;
+				hr = mDevice->EndScene();
+				STRONG_ASSERT(SUCCEEDED(hr) && "EndScene : DRIVER INTERNAL ERROR");
+				//1 코어 머신의 경우 VSync에 1ms 미만밖에 걸리지 않을 경우 1ms 잠을 잔다.다른 스레드로 처리를 돌리기 위해.
+				if (Threading::Manager().getCoreNumber() == 1) {
+					unsigned t0 = timeGetTime();
+					hr = mDevice->Present(NULL, NULL, NULL, NULL);
+					unsigned t1 = timeGetTime();
+					if (t1 == t0) {
+						Sleep(1);
+					}
+				}
+				else {
+					hr = mDevice->Present(NULL, NULL, NULL, NULL);
+				}
+				if (FAILED(hr)) {
+					mCanRender = false;
+					STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "Present : INVALID CALL");
+					STRONG_ASSERT(hr != D3DERR_DRIVERINTERNALERROR && "Present : DRIVER INTERNAL ERROR");
+				}
+				++mFrameId; //프레임 번호 인크리먼트
+			}
 			void restore() {
 				if (mCanRender) {
 					return; //리스토어 필요없어
