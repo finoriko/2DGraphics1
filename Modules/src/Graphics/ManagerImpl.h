@@ -144,52 +144,63 @@ namespace GameLib
 					}
 				}
 			}
-			void capture() {
-				int w = mPresentParameters.BackBufferWidth;
-				int h = mPresentParameters.BackBufferHeight;
+			~ManagerImpl() {
+				setTexture(0);
+				setVertexBuffer(0);
+				setIndexBuffer(0);
 
+				mWhiteTexture->release(); //직접 Impl을 new했을 때는 release() 해 주지 않으면 혼난다
+				SAFE_DELETE(mWhiteTexture);
+				mFullScreenQuadVertexBuffer->release();
+				SAFE_DELETE(mFullScreenQuadVertexBuffer);
+
+				mVertexDeclaration->Release();
+				mVertexDeclaration = 0;
+				mNoLightingVertexShader->Release();
+				mNoLightingVertexShader = 0;
+				mVertexLightingVertexShader->Release();
+				mVertexLightingVertexShader = 0;
+				if (mPixelShaderReady) {
+					mPixelLightingVertexShader->Release();
+					mPixelLightingVertexShader = 0;
+					mPixelLightingPixelShader->Release();
+					mPixelLightingPixelShader = 0;
+				}
+				mDevice->Release();
+				mDevice = 0;
+				mDirect3d->Release();
+				mDirect3d = 0;
+			}
+			void createShader(
+				IDirect3DVertexShader9** outVs,
+				IDirect3DPixelShader9** outPs,
+				const char* shaderObjFile,
+				int shaderObjSize) {
+				DWORD* shaderObj = 0;
+
+				// 라이팅 없음
+				const unsigned char* shaderObjRaw;
+				shaderObjRaw = reinterpret_cast<const unsigned char*>(shaderObjFile);
+				STRONG_ASSERT(shaderObjSize % 4 == 0);
+				shaderObj = NEW DWORD[shaderObjSize / 4];
+				//DWORD배열로 복사
+				for (int i = 0; i < shaderObjSize / 4; ++i) {
+					shaderObj[i] = shaderObjRaw[i * 4 + 0];
+					shaderObj[i] |= shaderObjRaw[i * 4 + 1] << 8;
+					shaderObj[i] |= shaderObjRaw[i * 4 + 2] << 16;
+					shaderObj[i] |= shaderObjRaw[i * 4 + 3] << 24;
+				}
 				HRESULT hr;
-				IDirect3DSurface9* srcSurface;
-				hr = mDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &srcSurface);
-				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "GetBackBuffer : INVALID CALL");
-				//기입측
-				IDirect3DSurface9* tmpSurface;
-				hr = mDevice->CreateRenderTarget(
-					w,
-					h,
-					D3DFMT_X8R8G8B8,
-					D3DMULTISAMPLE_NONE,
-					0,
-					TRUE,
-					&tmpSurface,
-					NULL);
-				STRONG_ASSERT(hr != D3DERR_NOTAVAILABLE && "CreateRenderTarget : NOT AVAILABLE");
-				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "CreateRenderTarget : INVALID CALL");
-				STRONG_ASSERT(hr != D3DERR_OUTOFVIDEOMEMORY && "CreateRenderTarget : OUT OF VIDEO MEMORY");
-				STRONG_ASSERT(hr != E_OUTOFMEMORY && "CreateRenderTarget : OUT OF MEMORY");
-				//MSAA 분리
-				hr = mDevice->StretchRect(srcSurface, NULL, tmpSurface, NULL, D3DTEXF_POINT);
-				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "StretchRect : INVALID CALL");
-				//// 메모리측 서피스 생성
-				IDirect3DSurface9* dstSurface;
-				hr = mDevice->CreateOffscreenPlainSurface(w, h, D3DFMT_X8R8G8B8, D3DPOOL_SYSTEMMEM, &dstSurface, NULL);
-				//메모리로 데이터 전송
-				hr = mDevice->GetRenderTargetData(tmpSurface, dstSurface);
-				//다음에 잠그고 읽으면서 쓰기
-				D3DLOCKED_RECT rect;
-				hr = dstSurface->LockRect(&rect, NULL, D3DLOCK_READONLY);
-				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "LockRect : INVALID CALL");
-				Texture::Impl::write(mCaptureFilename.c_str(), w, h, rect.Pitch, static_cast<const unsigned*>(rect.pBits));
-				hr = dstSurface->UnlockRect();
-				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "UnlockRect : INVALID CALL");
-				//뒤처리
-				dstSurface->Release();
-				dstSurface = 0;
-				tmpSurface->Release();
-				tmpSurface = 0;
-				srcSurface->Release();
-				srcSurface = 0;
-				mCaptureRequest = false;
+				if (outVs) {
+					hr = mDevice->CreateVertexShader(shaderObj, outVs);
+				}
+				else {
+					hr = mDevice->CreatePixelShader(shaderObj, outPs);
+				}
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "CreateXXXShader : INVALID CALL");
+				STRONG_ASSERT(hr != D3DERR_OUTOFVIDEOMEMORY && "CreateXXXShader : OUTOF VIDEO MEMORY");
+				STRONG_ASSERT(hr != E_OUTOFMEMORY && "CreateXXXShader : E_OUTOFMEMORY");
+				SAFE_DELETE(shaderObj);
 			}
 			//부팅시 Device Lost 후에 부른다.기본적으로 아무 일도 없으면 한번에 좋은 스테이트 군
 			void setInitialStates() {
@@ -316,6 +327,54 @@ namespace GameLib
 				}
 				++mFrameId; //프레임 번호 인크리먼트
 			}
+			void capture() {
+				int w = mPresentParameters.BackBufferWidth;
+				int h = mPresentParameters.BackBufferHeight;
+
+				HRESULT hr;
+				IDirect3DSurface9* srcSurface;
+				hr = mDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &srcSurface);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "GetBackBuffer : INVALID CALL");
+				//기입측
+				IDirect3DSurface9* tmpSurface;
+				hr = mDevice->CreateRenderTarget(
+					w,
+					h,
+					D3DFMT_X8R8G8B8,
+					D3DMULTISAMPLE_NONE,
+					0,
+					TRUE,
+					&tmpSurface,
+					NULL);
+				STRONG_ASSERT(hr != D3DERR_NOTAVAILABLE && "CreateRenderTarget : NOT AVAILABLE");
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "CreateRenderTarget : INVALID CALL");
+				STRONG_ASSERT(hr != D3DERR_OUTOFVIDEOMEMORY && "CreateRenderTarget : OUT OF VIDEO MEMORY");
+				STRONG_ASSERT(hr != E_OUTOFMEMORY && "CreateRenderTarget : OUT OF MEMORY");
+				//MSAA 분리
+				hr = mDevice->StretchRect(srcSurface, NULL, tmpSurface, NULL, D3DTEXF_POINT);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "StretchRect : INVALID CALL");
+				//// 메모리측 서피스 생성
+				IDirect3DSurface9* dstSurface;
+				hr = mDevice->CreateOffscreenPlainSurface(w, h, D3DFMT_X8R8G8B8, D3DPOOL_SYSTEMMEM, &dstSurface, NULL);
+				//메모리로 데이터 전송
+				hr = mDevice->GetRenderTargetData(tmpSurface, dstSurface);
+				//다음에 잠그고 읽으면서 쓰기
+				D3DLOCKED_RECT rect;
+				hr = dstSurface->LockRect(&rect, NULL, D3DLOCK_READONLY);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "LockRect : INVALID CALL");
+				Texture::Impl::write(mCaptureFilename.c_str(), w, h, rect.Pitch, static_cast<const unsigned*>(rect.pBits));
+				hr = dstSurface->UnlockRect();
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "UnlockRect : INVALID CALL");
+				//뒤처리
+				dstSurface->Release();
+				dstSurface = 0;
+				tmpSurface->Release();
+				tmpSurface = 0;
+				srcSurface->Release();
+				srcSurface = 0;
+				mCaptureRequest = false;
+			}
+
 			void restore() {
 				if (mCanRender) {
 					return; //리스토어 필요없어
