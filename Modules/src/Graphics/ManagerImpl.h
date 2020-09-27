@@ -143,6 +143,183 @@ namespace GameLib
 						mMsaaQualityFullScreen = 0;
 					}
 				}
+				//해상도 열거
+				UINT modeCount = mDirect3d->GetAdapterModeCount(D3DADAPTER_DEFAULT, D3DFMT_X8R8G8B8);
+				Array< D3DDISPLAYMODE > modes(modeCount);
+				for (UINT i = 0; i < modeCount; ++i) {
+					hr = mDirect3d->EnumAdapterModes(D3DADAPTER_DEFAULT, D3DFMT_X8R8G8B8, i, &modes[i]);
+				}
+				//현재의 모드가 모니터의 자연스러운 사이즈라고 가정하고, 그 아스펙트비 이외에는 제외한다.
+				D3DDISPLAYMODE currentMode;
+				hr = mDirect3d->GetAdapterDisplayMode(D3DADAPTER_DEFAULT, &currentMode);
+				STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "GetAdapterDisplayMode : INVALID CALL");
+				float nativeAspect = static_cast<float>(currentMode.Width) / static_cast<float>(currentMode.Height);
+				//오리지널 해상도보다 크고 가까운 것을 우선 찾는다
+				int minScore = 0x7fffffff;
+				int minScoreIndex = -1;
+				for (UINT i = 0; i < modeCount; ++i) {
+					int tw = static_cast<int>(modes[i].Width);
+					int th = static_cast<int>(modes[i].Height);
+					float aspect = static_cast<float>(tw) / static_cast<float>(th);
+					if (Math::abs(nativeAspect - aspect) < 0.0001f) { //아스펙트비가 같아서 가까운 녀석
+						if (tw >= w && th >= h) {
+							int score = (tw - w) + (th - h);
+							if (score < minScore) {
+								minScore = score;
+								minScoreIndex = i;
+							}
+						}
+					}
+				}
+				//없다면 작아도 좋으니까 차이가 작은 것을 찾는다
+				if (minScoreIndex == -1) {
+					for (UINT i = 0; i < modeCount; ++i) {
+						int tw = static_cast<int>(modes[i].Width);
+						int th = static_cast<int>(modes[i].Height);
+						float aspect = static_cast<float>(tw) / static_cast<float>(th);
+						if (Math::abs(nativeAspect - aspect) < 0.0001f) { //아스펙트비가 같아서 가까운 녀석
+							int score = std::abs(tw - w) + std::abs(th - h);
+							if (score < minScore) {
+								minScore = score;
+								minScoreIndex = i;
+							}
+						}
+					}
+				}
+				mFullScreenWindowWidth = modes[minScoreIndex].Width;
+				mFullScreenWindowHeight = modes[minScoreIndex].Height;
+
+				//파라미터 작성
+				ZeroMemory(&mPresentParameters, sizeof(D3DPRESENT_PARAMETERS));
+				mPresentParameters.BackBufferCount = 1;
+				mPresentParameters.EnableAutoDepthStencil = TRUE;
+				mPresentParameters.AutoDepthStencilFormat = D3DFMT_D24S8;
+				mPresentParameters.SwapEffect = D3DSWAPEFFECT_DISCARD;
+				mPresentParameters.PresentationInterval = (mVSync) ? D3DPRESENT_INTERVAL_ONE : D3DPRESENT_INTERVAL_IMMEDIATE;
+				mPresentParameters.BackBufferFormat = D3DFMT_X8R8G8B8;
+				//풀스크린과 창으로 분기
+				if (mFullScreen) {
+					mPresentParameters.Windowed = FALSE;
+					mPresentParameters.BackBufferWidth = mFullScreenWindowWidth;
+					mPresentParameters.BackBufferHeight = mFullScreenWindowHeight;
+					if (mMsaaQualityFullScreen > 0) {
+						mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONMASKABLE;
+						mPresentParameters.MultiSampleQuality = mMsaaQualityFullScreen - 1;
+					}
+					else {
+						mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
+						mPresentParameters.MultiSampleQuality = 0;
+					}
+				}
+				else {
+					mPresentParameters.Windowed = TRUE;
+					mPresentParameters.BackBufferWidth = w;
+					mPresentParameters.BackBufferHeight = h;
+					if (mMsaaQualityWindowed > 0) {
+						mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONMASKABLE;
+						mPresentParameters.MultiSampleQuality = mMsaaQualityWindowed - 1;
+					}
+					else {
+						mPresentParameters.MultiSampleType = D3DMULTISAMPLE_NONE;
+						mPresentParameters.MultiSampleQuality = 0;
+					}
+				}
+				//HW 정점 처리로 시행
+				if (vs11) {
+					hr = mDirect3d->CreateDevice(
+						D3DADAPTER_DEFAULT,
+						D3DDEVTYPE_HAL,
+						mWindowHandle,
+						D3DCREATE_HARDWARE_VERTEXPROCESSING | D3DCREATE_PUREDEVICE,
+						&mPresentParameters,
+						&mDevice);
+				}
+				else {
+					hr = D3DERR_INVALIDCALL; //적당한 에러를 넣어두고 다음 소프트 정점 초기화
+				}
+				if (FAILED(hr)) { //안되면 소프트웨어 정점에서
+					hr = mDirect3d->CreateDevice(
+						D3DADAPTER_DEFAULT,
+						D3DDEVTYPE_HAL,
+						mWindowHandle,
+						D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+						&mPresentParameters,
+						&mDevice);
+					if (FAILED(hr)) {
+						STRONG_ASSERT(hr != D3DERR_INVALIDCALL && "CreateDevice : INVALID CALL");
+						STRONG_ASSERT(hr != D3DERR_NOTAVAILABLE && "CreateDevice : NOT AVAILABLE");
+						STRONG_ASSERT(hr != D3DERR_OUTOFVIDEOMEMORY && "CreateDevice : OUT OF VIDEO MEMORY");
+						HALT("CreateDevice : unknown error");
+					}
+				}
+				//정점 선언을 만들다
+				D3DVERTEXELEMENT9 vElements[] = {
+					{ 0, 0, D3DDECLTYPE_FLOAT4, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0 },
+					{ 0, 16, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_NORMAL, 0 },
+					{ 0, 28, D3DDECLTYPE_UBYTE4N, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_COLOR, 0 },
+					{ 0, 32, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0 },
+					D3DDECL_END(),
+				};
+				hr = mDevice->CreateVertexDeclaration(vElements, &mVertexDeclaration);
+				STRONG_ASSERT(SUCCEEDED(hr) && "CreateVertexDeclaration : INVALID CALL");
+
+				//셰이더를 만들다.
+				createShader(
+					&mNoLightingVertexShader,
+					0,
+					gShaderNoLightingVsObj,
+					sizeof(gShaderNoLightingVsObj));
+				createShader(
+					&mVertexLightingVertexShader,
+					0,
+					gShaderVertexLightingVsObj,
+					sizeof(gShaderVertexLightingVsObj));
+				//픽셀 쉐이더를 사용하는 경우
+				if (mPixelShaderReady) {
+					createShader(
+						&mPixelLightingVertexShader,
+						0,
+						gShaderPixelLightingVsObj,
+						sizeof(gShaderPixelLightingVsObj));
+					createShader(
+						0,
+						&mPixelLightingPixelShader,
+						gShaderPixelLightingPsObj,
+						sizeof(gShaderPixelLightingPsObj));
+				}
+
+				//초기 뷰포트 설정(단 이것은 더미이며 실제로는 수정됨)
+				mViewport.X = mViewport.Y = 0;
+				mViewport.Width = mWidth;
+				mViewport.Height = mHeight;
+				mViewport.MinZ = 0.f;
+				mViewport.MaxZ = 1.f;
+
+				//전체 화면 그리기용 꼭짓점 버퍼와 인덱스 버퍼
+				mFullScreenQuadVertexBuffer = NEW VertexBuffer::Impl(3, mDevice);
+				Vertex* v = static_cast<Vertex*>(mFullScreenQuadVertexBuffer->lock());
+				for (int i = 0; i < 3; ++i) {
+					v[i].mColor = 0xffffffff;
+					v[i].mPosition.set(-1.f, 1.f, 0.f, 1.f);
+					v[i].mUv.set(0.f, 0.f);
+				}
+				v[2].mPosition.x += 4.f;
+				v[1].mPosition.y -= 4.f;//y는 반대
+				v[2].mUv.x = 2.f;
+				v[1].mUv.y = 2.f;
+				mFullScreenQuadVertexBuffer->unlock();
+				v = 0; //다 썼다
+
+				//새하얀 텍스처 준비
+				mWhiteTexture = NEW Texture::Impl(1, 1, false, mDevice);
+				unsigned* textureData;
+				int pitch;
+				mWhiteTexture->lock(&textureData, &pitch, 0);
+				*textureData = 0xffffffff;
+				mWhiteTexture->unlock(0);
+				textureData = 0;
+				// 기동시 디바이스 초기화
+				setInitialStates();
 			}
 			~ManagerImpl() {
 				setTexture(0);

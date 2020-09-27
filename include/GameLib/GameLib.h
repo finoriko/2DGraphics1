@@ -12,7 +12,7 @@ namespace GameLib
 }
 //매크로 류
 #define STRONG_ASSERT( exp ) ( ( !! ( exp ) ) || ( GameLib::halt( __FILE__, __LINE__, #exp ), 0 ) )//이 부분을 이해하기란 상당히 어렵다
-//#define HALT( exp ) { GameLib::halt( __FILE__, __LINE__, #exp ); }
+#define HALT( exp ) { GameLib::halt( __FILE__, __LINE__, #exp ); }
 #define SAFE_DELETE( x ) { delete ( x ); ( x ) = 0; }
 #define SAFE_DELETE_ARRAY( x ) { delete[] ( x ); ( x ) = 0; }
 #define OPERATOR_DELETE( x ) { operator delete( x ); ( x ) = 0;}
