@@ -12,8 +12,8 @@ namespace GameLib
 			void setWidth(int width);
 			void setHeight(int height);
 			void setTitle(const char* title);
-			void forbidFullScreen(bool = true); //이것을 불러두면 alt-enter가 무시된다
-			void enableFullScreen(bool = true);
+			void forbidFullScreen(bool f); //이것을 불러두면 alt-enter가 무시된다
+			void enableFullScreen(bool f);
 			void enableDragAndDrop(bool = true);
 		};
 		WindowCreator();

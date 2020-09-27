@@ -24,8 +24,8 @@ namespace GameLib
 			int joystickNumber() const;
 
 			//아래는 몰라도 된다
-			static void create(void* windowHandle);
-			static void destroy();
+			static void create(void* windowHandle); //static by ghryu
+			static void destroy();                  //static  by ghryu
 			void update(float pointerScale, const Math::Vector2& pointerOffset);
 		};
 

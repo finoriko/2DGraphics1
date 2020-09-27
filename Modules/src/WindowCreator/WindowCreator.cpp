@@ -207,12 +207,12 @@ namespace GameLib
 
 	//Configuration
 
-	void WindowCreator::Configuration::setWidth(int w) {
-		gImpl->mWidth = w;
+	void WindowCreator::Configuration::setWidth(int width) {
+		gImpl->mWidth = width;
 	}
 
-	void WindowCreator::Configuration::setHeight(int h) {
-		gImpl->mHeight = h;
+	void WindowCreator::Configuration::setHeight(int height){
+		gImpl->mHeight = height;
 	}
 
 	void WindowCreator::Configuration::setTitle(const char* title) {

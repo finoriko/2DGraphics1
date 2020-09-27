@@ -1,9 +1,10 @@
 #ifndef INCLUDED_GAMELIB_THREADING_MANAGER_H
 #define INCLUDED_GAMELIB_THREADING_MANAGER_H
 
-namespace GameLib {
-	namespace Threading {
-
+namespace GameLib 
+{
+	namespace Threading 
+	{
 		class Manager {
 		public:
 			Manager();

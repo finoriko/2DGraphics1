@@ -171,7 +171,11 @@
     <ClCompile Include="src\PseudoXml\Element.cpp" />
     <ClCompile Include="src\PseudoXml\Tag.cpp" />
     <ClCompile Include="src\Scene\Font.cpp" />
+    <ClCompile Include="src\Scene\PrimitiveRenderer.cpp" />
     <ClCompile Include="src\Scene\StringRenderer.cpp" />
+    <ClCompile Include="src\Sound\Manager.cpp" />
+    <ClCompile Include="src\Sound\Player.cpp" />
+    <ClCompile Include="src\Sound\Wave.cpp" />
     <ClCompile Include="src\Threading\Event.cpp" />
     <ClCompile Include="src\Threading\Functions.cpp" />
     <ClCompile Include="src\Threading\Manager.cpp" />
@@ -188,7 +192,10 @@
     <ClInclude Include="..\include\GameLib\Base\IBinaryStream.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\ConstantTypeTemplate.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\OStringStreamImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\PoolImpl.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\QueueImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h" />
@@ -197,8 +204,8 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\VectorImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
     <ClInclude Include="..\include\GameLib\Base\OStringStream.h" />
-    <ClInclude Include="..\include\GameLib\Base\OStringStreamImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Pool.h" />
+    <ClInclude Include="..\include\GameLib\Base\Queue.h" />
     <ClInclude Include="..\include\GameLib\Base\RefString.h" />
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
     <ClInclude Include="..\include\GameLib\Base\Stack.h" />
@@ -229,7 +236,11 @@
     <ClInclude Include="..\include\GameLib\PseudoXml\Document.h" />
     <ClInclude Include="..\include\GameLib\PseudoXml\Element.h" />
     <ClInclude Include="..\include\GameLib\Scene\Font.h" />
+    <ClInclude Include="..\include\GameLib\Scene\PrimitiveRenderer.h" />
     <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h" />
+    <ClInclude Include="..\include\GameLib\Sound\Manager.h" />
+    <ClInclude Include="..\include\GameLib\Sound\Player.h" />
+    <ClInclude Include="..\include\GameLib\Sound\Wave.h" />
     <ClInclude Include="..\include\GameLib\Threading\Event.h" />
     <ClInclude Include="..\include\GameLib\Threading\Functions.h" />
     <ClInclude Include="..\include\GameLib\Threading\Manager.h" />
@@ -254,6 +265,9 @@
     <ClInclude Include="src\Scene\FontImpl.h" />
     <ClInclude Include="src\Scene\FontImplBitmap.h" />
     <ClInclude Include="src\Scene\FontImplOS.h" />
+    <ClInclude Include="src\Sound\ManagerImpl.h" />
+    <ClInclude Include="src\Sound\PlayerImpl.h" />
+    <ClInclude Include="src\Sound\WaveImpl.h" />
     <ClInclude Include="src\Threading\ManagerImpl.h" />
     <ClInclude Include="src\WindowCreator\resource.h" />
   </ItemGroup>
