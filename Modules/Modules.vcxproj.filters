@@ -1,393 +1,423 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="FileIO">
+      <UniqueIdentifier>{e84ae628-2e6c-41cd-b500-67ac7294038a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Base">
+      <UniqueIdentifier>{b1c9fea8-f3a0-4636-abaa-d439aa80fa75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="리소스 파일">
+    <Filter Include="Math">
+      <UniqueIdentifier>{2c4ea2e5-1af6-478d-9d74-b63e07b95007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{af1e480a-20fb-4814-94e6-51002f4a03b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{74ad0028-6d4e-484c-b348-18dcff808bd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PseudoXml">
+      <UniqueIdentifier>{8ad2148d-9cf5-4b02-af8c-62efd1cd9aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{5fffa7b2-f8fb-4330-adf6-c7735adf19b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="WindowCreator">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Base\Impl">
+      <UniqueIdentifier>{7d5bba3b-192f-498f-ab92-6f0f0ea23496}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Input\Manager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WindowCreator\WindowCreator.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Keyboard.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Joystick.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Input\Mouse.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Functions.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Threading\Functions.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Random.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Base\Halt.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Scene\Font.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="src\Graphics\Texture.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Scene\StringRenderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Vector3.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Vector2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Base\DebugStream.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Threading\Mutex.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Base\OStringStream.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Base\RefString.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Base\Conversion.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\Manager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Vector4.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\VertexBuffer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PseudoXml\Element.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\PseudoXml\Attribute.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Matrix44.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Matrix34.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Math\Matrix33.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Graphics\IndexBuffer.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\Threading\Manager.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\Base\Conversion.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="src\Threading\Thread.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\Base\DebugStream.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="src\Threading\Semaphore.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Threading\Event.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\Base\Halt.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="src\Base\IBinaryStream.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="src\PseudoXml\Document.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\Base\OStringStream.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="src\PseudoXml\Tag.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\Math\Functions.cpp">
+      <Filter>Math</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scene\PrimitiveRenderer.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\Math\Matrix33.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Matrix34.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Matrix44.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Threading\Event.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Threading\Mutex.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Threading\Functions.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Threading\Manager.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Threading\Semaphore.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Threading\Thread.cpp">
+      <Filter>Threading</Filter>
     </ClCompile>
     <ClCompile Include="src\Sound\Manager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Sound</Filter>
     </ClCompile>
     <ClCompile Include="src\Sound\Player.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Joystick.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Keyboard.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Manager.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\Mouse.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Vector2.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Vector3.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Vector4.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Math\Random.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Base\RefString.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PseudoXml\Attribute.cpp">
+      <Filter>PseudoXml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PseudoXml\Document.cpp">
+      <Filter>PseudoXml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PseudoXml\Element.cpp">
+      <Filter>PseudoXml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PseudoXml\Tag.cpp">
+      <Filter>PseudoXml</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\Font.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\StringRenderer.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\PrimitiveRenderer.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\Sound\Wave.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WindowCreator\WindowCreator.cpp">
+      <Filter>WindowCreator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Input\Manager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Input\Keyboard.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>WindowCreator</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\GameLib.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\AutoPtr.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\DebugStream.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\MemoryManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\SharedPtr.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Array.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Input\Joystick.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\JoystickImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Input\ManagerImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Input\Mouse.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Vector2.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Functions.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Threading\Functions.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Random.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>WindowCreator</Filter>
     </ClInclude>
     <ClInclude Include="src\WindowCreator\resource.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>WindowCreator</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Base\Array.h">
+      <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\Manager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\Texture.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Scene\Font.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Tank.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Vector3.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Scene\FontImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Scene\FontImplBitmap.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Scene\FontImplOS.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\Enum.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\TankImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\TextureImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Threading\Mutex.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\OStringStream.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\RefString.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Base\AutoPtr.h">
+      <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Base\Conversion.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="src\Graphics\ManagerImpl.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Base\DebugStream.h">
+      <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Vector4.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\Vertex.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\VertexBuffer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\IndexBufferImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\NoLightingVsGenerated.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\PixelLightingPsGenerated.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\PixelLightingVsGenerated.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\VertexBufferImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Graphics\VertexLightingVsGenerated.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\PseudoXml\Element.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h">
+      <Filter>Base\Impl</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\PseudoXml\Attribute.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PseudoXml\DocumentImpl.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>PseudoXml</Filter>
     </ClInclude>
     <ClInclude Include="src\PseudoXml\AttributeImpl.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>PseudoXml</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\PoolImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Pool.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Matrix44.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Matrix34.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Math\Matrix33.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PseudoXml\ElementImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Graphics\IndexBuffer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Stack.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\StackImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Threading\Manager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Threading\Thread.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Threading\ManagerImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Threading\Event.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Threading\Semaphore.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\IBinaryStream.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\FileIO\Manager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\FileIO\InFile.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="src\PseudoXml\DocumentImpl.h">
+      <Filter>PseudoXml</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\PseudoXml\Document.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>PseudoXml</Filter>
     </ClInclude>
-    <ClInclude Include="src\PseudoXml\Tag.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Scene\Font.h">
+      <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Vector.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\VectorImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\OStringStreamImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Scene\PrimitiveRenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Queue.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\GameLib\Base\Impl\QueueImpl.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h">
+      <Filter>Base\Impl</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Base\Impl\ConstantTypeTemplate.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\PseudoXml\Element.h">
+      <Filter>PseudoXml</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PseudoXml\ElementImpl.h">
+      <Filter>PseudoXml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Threading\Event.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\FontImpl.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\FontImplBitmap.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\FontImplOS.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Threading\Functions.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Functions.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Graphics\IndexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\FileIO\InFile.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Graphics\Enum.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Input\Keyboard.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Input\Joystick.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\JoystickImpl.h">
+      <Filter>Input</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Sound\Manager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Sound</Filter>
     </ClInclude>
-    <ClInclude Include="src\Sound\PlayerImpl.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Threading\Manager.h">
+      <Filter>Threading</Filter>
     </ClInclude>
-    <ClInclude Include="src\Sound\WaveImpl.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="..\include\GameLib\Math\Matrix44.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Matrix33.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Matrix34.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Input\Mouse.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\IndexBufferImpl.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Input\Manager.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\FileIO\Manager.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Graphics\Manager.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\ManagerImpl.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Sound\ManagerImpl.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Threading\ManagerImpl.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Input\ManagerImpl.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileIO\ManagerImpl.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Threading\Mutex.h">
+      <Filter>Threading</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Sound\Player.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\PixelLightingPsGenerated.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\PixelLightingVsGenerated.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\NoLightingVsGenerated.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sound\PlayerImpl.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\IBinaryStream.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\MemoryManager.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\OStringStream.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\OStringStreamImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Pool.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\PoolImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Scene\PrimitiveRenderer.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Queue.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Random.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\RefString.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Threading\Semaphore.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Threading\Thread.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\SharedPtr.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Stack.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Tank.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Vector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Vector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Math\Vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Graphics\VertexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Graphics\Vertex.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Graphics\Texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\VertexBufferImpl.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\VertexLightingVsGenerated.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Scene\StringRenderer.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Graphics\TextureImpl.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PseudoXml\Tag.h">
+      <Filter>PseudoXml</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\Sound\Wave.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sound\WaveImpl.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\TankImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\StackImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Vector.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\VectorImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\SharedPtrImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceTypeTemplate.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\ReferenceType.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\QueueImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\FileIO\OutFile.h">
+      <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

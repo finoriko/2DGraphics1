@@ -214,6 +214,7 @@
     <ClInclude Include="..\include\GameLib\Base\Vector.h" />
     <ClInclude Include="..\include\GameLib\FileIO\InFile.h" />
     <ClInclude Include="..\include\GameLib\FileIO\Manager.h" />
+    <ClInclude Include="..\include\GameLib\FileIO\OutFile.h" />
     <ClInclude Include="..\include\GameLib\GameLib.h" />
     <ClInclude Include="..\include\GameLib\Graphics\Enum.h" />
     <ClInclude Include="..\include\GameLib\Graphics\IndexBuffer.h" />
@@ -249,6 +250,7 @@
     <ClInclude Include="..\include\GameLib\Threading\Semaphore.h" />
     <ClInclude Include="..\include\GameLib\Threading\Thread.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
+    <ClInclude Include="src\FileIO\ManagerImpl.h" />
     <ClInclude Include="src\Graphics\IndexBufferImpl.h" />
     <ClInclude Include="src\Graphics\ManagerImpl.h" />
     <ClInclude Include="src\Graphics\NoLightingVsGenerated.h" />
