@@ -7,16 +7,16 @@ template< class T > class AutoPtr{
 public:
 	AutoPtr( T* p = 0 );
 	~AutoPtr();
-	//ëŒ€ì… : ë‚´ìš©ë¬¼ì´ ìˆìœ¼ë©´ ì¦‰ì‹œ ì‚­ì œ (ì´ë¥¼ ì´ìš©í•˜ì—¬ =0ìœ¼ë¡œ ì›í•˜ëŠ” íƒ€ì´ë°ì— ì§€ìš¸ ìˆ˜ ìˆìŒ)
+	//´ëÀÔ : ³»¿ë¹°ÀÌ ÀÖÀ¸¸é Áï½Ã »èÁ¦ (ÀÌ¸¦ ÀÌ¿ëÇÏ¿© =0À¸·Î ¿øÇÏ´Â Å¸ÀÌ¹Ö¿¡ Áö¿ï ¼ö ÀÖÀ½)
 	AutoPtr& operator=( T* p );
 	T& operator*();
 	const T& operator*() const;
 	T* operator->();
 	const T* operator->() const;
-	operator void*() const; //ì´ê²ƒ ë•ë¶„ì— if (p) {ë¼ê³  ì“¸ ìˆ˜ ìˆë‹¤.
+	operator void*() const;//ÀÌ°Í ´öºĞ¿¡ if (p) {¶ó°í ¾µ ¼ö ÀÖ´Ù.
 private:
-	void operator=( AutoPtr< T >& ); //ëŒ€ì…ê¸ˆì§€ ê´€ë¦¬ì˜ ì´ì–‘ì€ ì´í•´í•˜ê¸° ì–´ë µë‹¤.
-	AutoPtr( AutoPtr< T >& ); //ë³µì‚¬ ìƒì„±ì ê¸ˆì§€
+	void operator=( AutoPtr< T >& ); //´ëÀÔ±İÁö °ü¸®ÀÇ ÀÌ¾çÀº ÀÌÇØÇÏ±â ¾î·Æ´Ù.
+	AutoPtr( AutoPtr< T >& ); //º¹»ç »ı¼ºÀÚ ±İÁö
 
 	T* mPointer;
 };

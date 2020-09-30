@@ -9,8 +9,8 @@ namespace GameLib{
 class RefString;
 class OStringStream;
 
-//ë””ë²„ê·¸ì•„ì›ƒì— coutìœ¼ë¡œ ë‚´ê¸° ìœ„í•œê²ƒ
-//ì—¬ëŸ¬ ìŠ¤ë ˆë“œë¡œ ë™ì‹œì— ë¶ˆëŸ¬ë„ ëœë‹¤
+//µğ¹ö±×¾Æ¿ô¿¡ coutÀ¸·Î ³»±â À§ÇÑ°Í
+//¿©·¯ ½º·¹µå·Î µ¿½Ã¿¡ ºÒ·¯µµ µÈ´Ù
 class DebugStream{
 public:
 	DebugStream();

@@ -38,7 +38,7 @@ namespace GameLib {
 			///밀려든 요구를 한꺼번에 그리기
 			void draw();
 			///폰트를 세트.최소 한 번은 이걸 해야 글씨를 쓸 수 있어.
-			void setFont(Font&);
+			void setFont(Font& font);
 
 			//이하 의식하지 않아도 된다
 			StringRenderer();

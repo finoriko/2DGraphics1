@@ -2,13 +2,18 @@
 //
 #include"Framework.h"
 
+
 namespace GameLib {
-	void Framework::update() {
-		unsigned* vram = videoMemory();
-		static unsigned i;
-		vram[i] += i * 100;
-		i += 9973; //1만 이하 최대의 소수
-		i %= (width() * height());
+	//void Framework::update() {
+	//	unsigned* vram = videoMemory();
+	//	static unsigned i;
+	//	vram[i] += i * 100;
+	//	i += 9973; //1만 이하 최대의 소수
+	//	i %= (width() * height());
+	//}
+	int main()
+	{
+		return 0;
 	}
 }
 

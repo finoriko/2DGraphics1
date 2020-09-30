@@ -3,18 +3,18 @@
 
 namespace GameLib{
 
-	/*ì°¸ì¡° ì¹´ìš´í„°ì‹ ê³µìœ  í¬ì¸í„°
+	/*ÂüÁ¶ Ä«¿îÅÍ½Ä °øÀ¯ Æ÷ÀÎÅÍ
 
-	ì“°ë ˆë“œ ì„¸ì´í”„ê°€ ì•„ë‹˜ì— ì£¼ì˜.
-	ConstSharedPtrì€ ì›ë˜ í˜•íƒœì˜ constí•¨ìˆ˜ë°–ì— ë¶€ë¥´ê²Œ í•˜ê³  ì‹¶ì§€ ì•Šì„ ë•Œë¥¼ ìœ„í•´
-	ì–´ë–¤ ê²ƒìœ¼ë¡œ Const Shared Ptr ì–´ë–¤ ê³³ì€ Shared Ptrë„ ëœë‹¤.
+	¾²·¹µå ¼¼ÀÌÇÁ°¡ ¾Æ´Ô¿¡ ÁÖÀÇ.
+	ConstSharedPtrÀº ¿ø·¡ ÇüÅÂÀÇ constÇÔ¼ö¹Û¿¡ ºÎ¸£°Ô ÇÏ°í ½ÍÁö ¾ÊÀ» ¶§¸¦ À§ÇØ
+	¾î¶² °ÍÀ¸·Î Const Shared Ptr ¾î¶² °÷Àº Shared Ptrµµ µÈ´Ù.
 
 	ConstSharedPtr<int > foo(){
 	return Shared Ptr<int >( 0 );
 	}
-	ì•¼,
+	¾ß,
 	ConstSharedPtr<int > a = Shared Ptr < int >();
-	ê°€ ì˜¤ì¼€ì´ë¼ëŠ” ê²ƒì´ë‹¤.
+	°¡ ¿ÀÄÉÀÌ¶ó´Â °ÍÀÌ´Ù.
 	*/
 template< class T > class SharedPtr{
 public:
@@ -42,7 +42,7 @@ private:
 	Reference* mReference;
 };
 
-//constç‰ˆ
+//constÆÇ
 template< class T > class ConstSharedPtr{
 public:
 	ConstSharedPtr();

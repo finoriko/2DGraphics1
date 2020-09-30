@@ -37,5 +37,6 @@ namespace GameLib {
 	extern StandardInput cin;
 
 } //namespace GameLib
+#include "GameLib/Base/DebugStream.h"
 
 #endif
