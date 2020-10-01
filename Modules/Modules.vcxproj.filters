@@ -156,6 +156,15 @@
     <ClCompile Include="src\WindowCreator\WindowCreator.cpp">
       <Filter>WindowCreator</Filter>
     </ClCompile>
+    <ClCompile Include="src\FileIO\InFile.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileIO\OutFile.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileIO\Manager.cpp">
+      <Filter>FileIO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
@@ -417,6 +426,15 @@
       <Filter>Base\Impl</Filter>
     </ClInclude>
     <ClInclude Include="..\include\GameLib\FileIO\OutFile.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileIO\Archive.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileIO\InFileImpl.h">
+      <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileIO\OutFileImpl.h">
       <Filter>FileIO</Filter>
     </ClInclude>
   </ItemGroup>

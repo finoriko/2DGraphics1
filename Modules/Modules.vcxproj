@@ -151,6 +151,9 @@
     <ClCompile Include="src\Base\IBinaryStream.cpp" />
     <ClCompile Include="src\Base\OStringStream.cpp" />
     <ClCompile Include="src\Base\RefString.cpp" />
+    <ClCompile Include="src\FileIO\InFile.cpp" />
+    <ClCompile Include="src\FileIO\Manager.cpp" />
+    <ClCompile Include="src\FileIO\OutFile.cpp" />
     <ClCompile Include="src\Graphics\IndexBuffer.cpp" />
     <ClCompile Include="src\Graphics\Manager.cpp" />
     <ClCompile Include="src\Graphics\Texture.cpp" />
@@ -250,7 +253,10 @@
     <ClInclude Include="..\include\GameLib\Threading\Semaphore.h" />
     <ClInclude Include="..\include\GameLib\Threading\Thread.h" />
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h" />
+    <ClInclude Include="src\FileIO\Archive.h" />
+    <ClInclude Include="src\FileIO\InFileImpl.h" />
     <ClInclude Include="src\FileIO\ManagerImpl.h" />
+    <ClInclude Include="src\FileIO\OutFileImpl.h" />
     <ClInclude Include="src\Graphics\IndexBufferImpl.h" />
     <ClInclude Include="src\Graphics\ManagerImpl.h" />
     <ClInclude Include="src\Graphics\NoLightingVsGenerated.h" />
