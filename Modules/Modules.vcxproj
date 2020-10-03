@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Base\Compressor.cpp" />
     <ClCompile Include="src\Base\Conversion.cpp" />
     <ClCompile Include="src\Base\DebugStream.cpp" />
     <ClCompile Include="src\Base\Halt.cpp" />
@@ -191,6 +192,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\Base\Array.h" />
     <ClInclude Include="..\include\GameLib\Base\AutoPtr.h" />
+    <ClInclude Include="..\include\GameLib\Base\Compressor.h" />
     <ClInclude Include="..\include\GameLib\Base\Conversion.h" />
     <ClInclude Include="..\include\GameLib\Base\DebugStream.h" />
     <ClInclude Include="..\include\GameLib\Base\IBinaryStream.h" />

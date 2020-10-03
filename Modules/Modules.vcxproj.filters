@@ -165,6 +165,9 @@
     <ClCompile Include="src\FileIO\Manager.cpp">
       <Filter>FileIO</Filter>
     </ClCompile>
+    <ClCompile Include="src\Base\Compressor.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
@@ -436,6 +439,9 @@
     </ClInclude>
     <ClInclude Include="src\FileIO\OutFileImpl.h">
       <Filter>FileIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Compressor.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
