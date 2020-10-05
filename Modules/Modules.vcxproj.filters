@@ -443,5 +443,11 @@
     <ClInclude Include="..\include\GameLib\Base\Compressor.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\HashMap.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Hash.h">
+      <Filter>Base</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

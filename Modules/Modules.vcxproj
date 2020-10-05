@@ -195,6 +195,8 @@
     <ClInclude Include="..\include\GameLib\Base\Compressor.h" />
     <ClInclude Include="..\include\GameLib\Base\Conversion.h" />
     <ClInclude Include="..\include\GameLib\Base\DebugStream.h" />
+    <ClInclude Include="..\include\GameLib\Base\Hash.h" />
+    <ClInclude Include="..\include\GameLib\Base\HashMap.h" />
     <ClInclude Include="..\include\GameLib\Base\IBinaryStream.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h" />
