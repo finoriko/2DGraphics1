@@ -201,6 +201,7 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\ArrayImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\AutoPtrImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\ConstantTypeTemplate.h" />
+    <ClInclude Include="..\include\GameLib\Base\Impl\HashImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\OStringStreamImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\PoolImpl.h" />
     <ClInclude Include="..\include\GameLib\Base\Impl\QueueImpl.h" />

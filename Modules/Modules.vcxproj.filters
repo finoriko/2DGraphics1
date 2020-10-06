@@ -449,5 +449,8 @@
     <ClInclude Include="..\include\GameLib\Base\Hash.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\Impl\HashImpl.h">
+      <Filter>Base\Impl</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
