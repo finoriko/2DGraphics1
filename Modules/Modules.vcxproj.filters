@@ -455,5 +455,8 @@
     <ClInclude Include="..\include\GameLib\Base\Impl\HashMapImpl.h">
       <Filter>Base\Impl</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\GameLib\Base\PrimeNumber.h">
+      <Filter>Base</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

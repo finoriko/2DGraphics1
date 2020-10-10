@@ -50,11 +50,108 @@ namespace GameLib
 			SAFE_DELETE_ARRAY(mNexts);
 		}
 	}
+	template< class K, class V, class H > inline void HashMap< K, V, H >::setCapacity(int capacity, int tableSize) {
+		ASSERT(mSize == 0 && "NOT EMPTY! call clear().");
+		//우선 클리어
+		if (mCapacity > 0) {
+			mEmptyStack.clear();
+			clear();
+			OPERATOR_DELETE(mValues); //생delete
+			OPERATOR_DELETE(mKeys); //생delete
+			SAFE_DELETE_ARRAY(mNexts);
+		}
+		//재확보
+		mCapacity = capacity;
+		if (capacity <= 0) { //0사이즈무한
+			return;
+		}
+		if (tableSize == 0) { //자동으로 capacity 이상의 소수 설정
+			tableSize = capacity;
+		}
+		tableSize = PrimeNumber::next(tableSize);
+		if (tableSize < 3) {
+			tableSize = 3; //최저로3
+		}
+		mTableSize = tableSize;
+		// 다음 배열 테이블 크기만큼 더미 더하기 주의
+		mNexts = NEW int[mCapacity + mTableSize];
+		//값 배열 확보.컨스트럭터가 불필요하므로 생new
+		mKeys = static_cast<K*>(OPERATOR_NEW(sizeof(K) * mCapacity));
+		mValues = static_cast<V*>(OPERATOR_NEW(sizeof(V) * mCapacity));
+		//빈 번호 스택
+		mEmptyStack.setCapacity(mCapacity);
+		for (int i = 0; i < mCapacity; ++i) {
+			mEmptyStack.push(i); //빈 번호 리스트에 채워 가다
+		}
+		//mCapacity+0부터 mCapacity+mTableSize-1번은 더미 요소.각 열의 선두 앞에 위치한다.
+		for (int i = 0; i < mTableSize; ++i) {
+			mNexts[mCapacity + i] = mCapacity + i + 1;
+		}
+	}
 
 	template< class K, class V, class H > inline int HashMap< K, V, H >::capacity() const {
 		return mCapacity;
 	}
+	template< class K, class V, class H > inline int HashMap< K, V, H >::add(const K& k, const V& v) {
+		ASSERT(mSize < mCapacity);
+		// 해시함수 산출
+		int h = H().value(k, mTableSize);
+		//검색
+		int p = mNexts[mCapacity + h];
+		while (p < mCapacity) {
+			if (H().isEqual(mKeys[p], k)) {
+				break;
+			}
+			p = mNexts[p];
+		}
+		if (p >= mCapacity) { //없으므로 더하다
+			////빈자리 획득
+			int newPos;
+			mEmptyStack.pop(&newPos);
+			// 테이블 선두에 삽입
+			int head = mCapacity + h;
+			mNexts[newPos] = mNexts[head]; //머리 더미 다음을 세트
+			new (&mKeys[newPos]) K(k); //복사 컨스트럭터 호출
+			new (&mValues[newPos]) V(v); //복사 컨스트럭터 호출
+			mNexts[head] = newPos; // 앞 링크를 새 노드에 연결
+			++mSize;
+			return newPos;
+		}
+		else {
+			return mCapacity + mTableSize;
+		}
+	}
 
+	template< class K, class V, class H > inline int HashMap< K, V, H >::add(const K& k) {
+		ASSERT(mSize < mCapacity);
+		//해시 함수 산출
+		int h = H().value(k, mTableSize);
+		//검색
+		int p = mNexts[mCapacity + h];
+		bool found = false;
+		while (p < mCapacity) {
+			if (H().isEqual(mKeys[p], k)) {
+				found = true;
+			}
+			p = mNexts[p];
+		}
+		if (!found) { //없으니 더하기
+			//빈자리 획득
+			int newPos;
+			mEmptyStack.pop(&newPos);
+			//테이블 선두에 삽입
+			int head = mCapacity + h;
+			mNexts[newPos] = mNexts[head]; //머리 더미 다음을 세트
+			new (&mKeys[newPos]) K(k); //복사 컨스트럭터 호출
+			new (&mValues[newPos]) V;
+			mNexts[head] = newPos; //앞 링크를 새 노드에 연결
+			++mSize;
+			return newPos;
+		}
+		else {
+			return mCapacity + mTableSize;
+		}
+	}
 	template< class K, class V, class H > inline int HashMap< K, V, H >::find(const K& k) const {
 		int h = H().value(k, mTableSize);
 

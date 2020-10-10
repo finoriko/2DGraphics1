@@ -215,6 +215,7 @@
     <ClInclude Include="..\include\GameLib\Base\MemoryManager.h" />
     <ClInclude Include="..\include\GameLib\Base\OStringStream.h" />
     <ClInclude Include="..\include\GameLib\Base\Pool.h" />
+    <ClInclude Include="..\include\GameLib\Base\PrimeNumber.h" />
     <ClInclude Include="..\include\GameLib\Base\Queue.h" />
     <ClInclude Include="..\include\GameLib\Base\RefString.h" />
     <ClInclude Include="..\include\GameLib\Base\SharedPtr.h" />
