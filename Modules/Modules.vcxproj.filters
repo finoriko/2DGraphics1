@@ -168,6 +168,9 @@
     <ClCompile Include="src\Base\Compressor.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="src\Base\PrimeNumber.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\GameLib\WindowCreator\WindowCreator.h">
