@@ -150,6 +150,7 @@
     <ClCompile Include="src\Base\DebugStream.cpp" />
     <ClCompile Include="src\Base\Halt.cpp" />
     <ClCompile Include="src\Base\IBinaryStream.cpp" />
+    <ClCompile Include="src\Base\MemoryManager.cpp" />
     <ClCompile Include="src\Base\OStringStream.cpp" />
     <ClCompile Include="src\Base\PrimeNumber.cpp" />
     <ClCompile Include="src\Base\RefString.cpp" />

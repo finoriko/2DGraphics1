@@ -19,10 +19,10 @@ namespace GameLib
 		// 기본값.set capacity를 불러야 작동한다
 		HashMap();
 		/// 최대 용량 지정.테이블 크기는 기본적으로 capacity 이상의 최소 소수.
-		explicit HashMap(int capacity, int table Size = 0);
+		explicit HashMap(int capacity, int tableSize = 0);
 		~HashMap();
 		/// 재확보.내용물이 있는 상태에서 부르면 assert. clear()해라.
-		void setCapacity(int capacity, int table Size = 0);
+		void setCapacity(int capacity, int tableSize = 0);
 		/// 최대 용량 획득
 		int capacity() const;
 		/// 현재 요소 수 획득
